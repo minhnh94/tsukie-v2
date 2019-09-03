@@ -67,3 +67,7 @@ yarn-error.log
 .pnp.js
 # Yarn Integrity file
 .yarn-integrity
+/.idea/
+
+# Content of the blog will be stored in another repository so we ignore it here
+content
