@@ -9,6 +9,8 @@ export default (props) => {
 		<section>
 			{posts.map(({ node }) => {
 				const title = node.frontmatter.title || node.fields.slug
+				const firstTag = node.frontmatter.tags[0]
+
 				return (
 					<article key={node.fields.slug}>
 						<header>
@@ -17,7 +19,7 @@ export default (props) => {
 									marginBottom: rhythm(1 / 4),
 								}}
 							>
-								<Link style={{ boxShadow: `none` }} to={`${lang}${node.fields.slug}`}>
+								<Link style={{ boxShadow: `none` }} to={`${lang}/${firstTag}${node.fields.slug}`}>
 									{title}
 								</Link>
 							</h3>

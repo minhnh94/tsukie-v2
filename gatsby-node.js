@@ -23,6 +23,7 @@ exports.createPages = async ({ graphql, actions }) => {
 							lang
 							title
 							description
+							tags
 						}
 					}
 				}
@@ -49,9 +50,10 @@ exports.createPages = async ({ graphql, actions }) => {
 	posts.forEach((post, index) => {
 		const previous = index === posts.length - 1 ? null : posts[index + 1].node
 		const next = index === 0 ? null : posts[index - 1].node
+		const firstTag = post.node.frontmatter.tags[0]
 
 		createPage({
-			path: `${post.node.frontmatter.lang}${post.node.fields.slug}`,
+			path: `${post.node.frontmatter.lang}/${firstTag}${post.node.fields.slug}`,
 			component: path.resolve(`./src/templates/blog-post.js`),
 			context: {
 				slug: post.node.fields.slug,

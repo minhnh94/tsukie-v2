@@ -44,6 +44,7 @@ export const pageQuery = graphql`
 						lang
 						title
 						description
+						tags
 					}
 				}
 			}
