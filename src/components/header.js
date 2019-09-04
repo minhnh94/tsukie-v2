@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
+import Language from "../lang/languages"
 
 const StyledUl = styled.ul`
 	list-style-type: none;
@@ -12,6 +13,7 @@ const StyledUl = styled.ul`
 
 const StyledLi = styled.li`
 	float: left;
+	padding-right: 5px;
 	
 	a {
 		color: #333;
@@ -19,8 +21,9 @@ const StyledLi = styled.li`
 		text-align: center;
 		padding: 14px 16px 18px 16px;
 		text-decoration: none;
+		text-transform: capitalize;
 		box-shadow: none;
-		border-bottom: 2px solid transparent;
+		border-bottom: 2px solid ${props => props.active ? "black" : "transparent"};
 	}
 	
 	a:hover {
@@ -62,28 +65,36 @@ const StyledLogo = styled.img`
 	transform: translateY(-50%);
 `
 
-const Logo = () => (
-	<StyledLink to={`/`}>
-		<StyledLogo src={require("../../content/assets/logo-header.png")} alt="Tsukie"/>
-	</StyledLink>
-)
+const Logo = ({ language }) => {
+	const homeLink = Language[language]["navLinks"]["home"]
 
-const NavigationContent = () => (
-	<StyledUl>
-		<StyledLi><Link to={`/`}>Home</Link></StyledLi>
-		<StyledLi><Link to={`/lifestyle/`}>Lifestyle</Link></StyledLi>
-		<StyledLi><Link to={`/technology/`}>Technology</Link></StyledLi>
-		<StyledLi><Link to={`/travel/`}>Travel</Link></StyledLi>
-		<StyledLi><Link to={`/contact-us/`}>Contact Us</Link></StyledLi>
-		<StyledLi><Link to={`/`}>EN</Link></StyledLi>
-		<StyledLi><Link to={`/vi/`}>VI</Link></StyledLi>
-		<StyledLi><Link to={`/ja/`}>JA</Link></StyledLi>
-	</StyledUl>
-)
+	return (
+		<StyledLink to={homeLink}>
+			<StyledLogo src={require("../../content/assets/logo-header.png")} alt="Tsukie"/>
+		</StyledLink>
+	)
+}
 
-export default () => (
+const NavigationContent = ({ location, language }) => {
+	const { navLinks, navTexts } = Language[language]
+	let navKeywords = ["home", "lifestyle", "technologies", "travel", "contactUs"]
+
+	return (
+		<StyledUl>
+			{navKeywords.map((keyword) => {
+				if (location.pathname === navLinks[keyword]) {
+					return <StyledLi key={keyword} active><Link to={navLinks[keyword]}>{navTexts[keyword]}</Link></StyledLi>
+				} else {
+					return <StyledLi key={keyword}><Link to={navLinks[keyword]}>{navTexts[keyword]}</Link></StyledLi>
+				}
+			})}
+		</StyledUl>
+	)
+}
+
+export default ({ location, language }) => (
 	<NavigationBar>
-		<Logo/>
-		<NavigationContent/>
+		<Logo language={language}/>
+		<NavigationContent location={location} language={language}/>
 	</NavigationBar>
 )

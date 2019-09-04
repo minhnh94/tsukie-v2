@@ -53,12 +53,13 @@ exports.createPages = async ({ graphql, actions }) => {
 		const firstTag = post.node.frontmatter.tags[0]
 
 		createPage({
-			path: `${post.node.frontmatter.lang}/${firstTag}${post.node.fields.slug}`,
+			path: `/${post.node.frontmatter.lang}/${firstTag}${post.node.fields.slug}`,
 			component: path.resolve(`./src/templates/blog-post.js`),
 			context: {
 				slug: post.node.fields.slug,
 				previous,
 				next,
+				language: post.node.frontmatter.lang,
 			},
 		})
 	})

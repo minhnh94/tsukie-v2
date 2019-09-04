@@ -14,7 +14,7 @@ class IndexTemplate extends React.Component {
 		const posts = data.allMarkdownRemark.edges
 
 		return (
-			<Layout location={location} title={siteTitle}>
+			<Layout location={location} title={siteTitle} language={language}>
 				<SEO title="All posts"/>
 				<FeaturedPosts/>
 				<Container lang={language} posts={posts}/>
