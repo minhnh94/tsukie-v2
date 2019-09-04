@@ -19,7 +19,7 @@ export default (props) => {
 									marginBottom: rhythm(1 / 4),
 								}}
 							>
-								<Link style={{ boxShadow: `none` }} to={`${lang}/${firstTag}${node.fields.slug}`}>
+								<Link style={{ boxShadow: `none` }} to={`/${lang}/${firstTag}${node.fields.slug}`}>
 									{title}
 								</Link>
 							</h3>

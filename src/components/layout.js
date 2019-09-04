@@ -3,11 +3,11 @@ import { Link } from "gatsby"
 import Header from "./header"
 import GlobalStyle from "../styles/global-style"
 
-export default ({ children }) => (
+export default ({ children, location, language }) => (
 	<div>
 		<GlobalStyle/>
 		<main>
-			<Header/>
+			<Header location={location} language={language}/>
 			{children}
 			<footer>
 				© {new Date().getFullYear()}, Built with
