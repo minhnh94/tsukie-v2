@@ -1,5 +1,6 @@
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
+const { getAllTagsWithLanguage } = require("./src/utils/helpers")
 
 exports.createPages = async ({ graphql, actions }) => {
 	const { createPage } = actions
@@ -41,7 +42,7 @@ exports.createPages = async ({ graphql, actions }) => {
 		createPage({
 			path: language === "en" ? "/" : `/${language}/`,
 			component: path.resolve("./src/templates/index.js"),
-			context: {language: language},
+			context: { language: language },
 		})
 	})
 
@@ -61,6 +62,19 @@ exports.createPages = async ({ graphql, actions }) => {
 				next,
 				language: post.node.frontmatter.lang,
 			},
+		})
+	})
+
+	// Create tag pages
+	languages.forEach((language) => {
+		const tags = getAllTagsWithLanguage(result.data.allMarkdownRemark.edges, language)
+		console.log(tags)
+		tags.forEach((tag) => {
+			createPage({
+				path: language === "en" ? `/tags/${tag}` : `/${language}/tags/${tag}`,
+				component: path.resolve("./src/templates/index.js"),
+				context: { language: language },
+			})
 		})
 	})
 }
