@@ -72,8 +72,8 @@ exports.createPages = async ({ graphql, actions }) => {
 		tags.forEach((tag) => {
 			createPage({
 				path: language === "en" ? `/tags/${tag}` : `/${language}/tags/${tag}`,
-				component: path.resolve("./src/templates/index.js"),
-				context: { language: language },
+				component: path.resolve("./src/templates/tag-index.js"),
+				context: { language: language, tag: tag },
 			})
 		})
 	})
