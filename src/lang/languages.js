@@ -2,9 +2,9 @@ export default {
 	en: {
 		navLinks: {
 			home: "/",
-			lifestyle: "/lifestyle/",
-			technologies: "/technologies/",
-			travel: "/travel/",
+			lifestyle: "/tags/lifestyle/",
+			technologies: "/tags/technologies/",
+			travel: "/tags/travel/",
 			contactUs: "/contact-us/",
 		},
 		navTexts: {
@@ -18,9 +18,9 @@ export default {
 	ja: {
 		navLinks: {
 			home: "/ja",
-			lifestyle: "/jinsei-seikatsu/",
-			technologies: "/gijutsu/",
-			travel: "/ryoko/",
+			lifestyle: "/ja/tags/jinsei-seikatsu/",
+			technologies: "/ja/tags/gijutsu/",
+			travel: "/ja/tags/ryoko/",
 			contactUs: "/contact-us/",
 		},
 		navTexts: {
@@ -34,9 +34,9 @@ export default {
 	vi: {
 		navLinks: {
 			home: "/vi",
-			lifestyle: "/cuoc-song/",
-			technologies: "/cong-nghe/",
-			travel: "/du-lich/",
+			lifestyle: "/vi/tags/cuoc-song/",
+			technologies: "/vi/tags/cong-nghe/",
+			travel: "/vi/tags/du-lich/",
 			contactUs: "/contact-us/",
 		},
 		navTexts: {
