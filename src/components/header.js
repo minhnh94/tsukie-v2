@@ -65,11 +65,15 @@ const StyledLogo = styled.img`
 	transform: translateY(-50%);
 `
 
-const Logo = () => (
-	<StyledLink to={`/`}>
-		<StyledLogo src={require("../../content/assets/logo-header.png")} alt="Tsukie"/>
-	</StyledLink>
-)
+const Logo = ({ language }) => {
+	const homeLink = Language[language]["navLinks"]["home"]
+
+	return (
+		<StyledLink to={homeLink}>
+			<StyledLogo src={require("../../content/assets/logo-header.png")} alt="Tsukie"/>
+		</StyledLink>
+	)
+}
 
 const NavigationContent = ({ location, language }) => {
 	const { navLinks, navTexts } = Language[language]
@@ -90,7 +94,7 @@ const NavigationContent = ({ location, language }) => {
 
 export default ({ location, language }) => (
 	<NavigationBar>
-		<Logo/>
+		<Logo language={language}/>
 		<NavigationContent location={location} language={language}/>
 	</NavigationBar>
 )
