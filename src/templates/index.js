@@ -45,6 +45,13 @@ export const pageQuery = graphql`
 						title
 						description
 						tags
+						thumbnail {
+							childImageSharp {
+								fluid (maxWidth:500, quality:50){
+									...GatsbyImageSharpFluid
+								}
+							}
+						}
 					}
 				}
 			}

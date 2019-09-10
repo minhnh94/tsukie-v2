@@ -1,40 +1,23 @@
 import React from "react"
-import { rhythm } from "../utils/typography"
-import { Link } from "gatsby"
+import styled from "styled-components"
+import Article from "./article"
+
+const FlexSection = styled.section`
+	flex: 1;
+	min-height: 1px;
+`
 
 export default (props) => {
 	const { posts, lang } = props
 
 	return (
-		<section>
+		<FlexSection>
 			{posts.map(({ node }) => {
 				const title = node.frontmatter.title || node.fields.slug
 				const firstTag = node.frontmatter.tags[0]
 
-				return (
-					<article key={node.fields.slug}>
-						<header>
-							<h3
-								style={{
-									marginBottom: rhythm(1 / 4),
-								}}
-							>
-								<Link style={{ boxShadow: `none` }} to={`/${lang}/${firstTag}${node.fields.slug}`}>
-									{title}
-								</Link>
-							</h3>
-							<small>{node.frontmatter.date}</small>
-						</header>
-						<section>
-							<p
-								dangerouslySetInnerHTML={{
-									__html: node.frontmatter.description || node.excerpt,
-								}}
-							/>
-						</section>
-					</article>
-				)
+				return <Article node={node} lang={lang} firstTag={firstTag} title={title}/>
 			})}
-		</section>
+		</FlexSection>
 	)
 }

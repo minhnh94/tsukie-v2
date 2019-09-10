@@ -6,10 +6,14 @@ export default createGlobalStyle`
 	}
 	
 	img {
-  		display: block;
-  		height: auto;
+  	display: block;
+  	height: auto;
 		max-width: 100%;
-	  	vertical-align: middle;
-	  	border: 0;
+  	vertical-align: middle;
+  	border: 0;
+	}
+	
+	a {
+		box-shadow: none;
 	}
 `

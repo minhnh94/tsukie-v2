@@ -2,9 +2,14 @@ import React from "react"
 import { Link } from "gatsby"
 import Header from "./header"
 import GlobalStyle from "../styles/global-style"
+import styled from "styled-components"
+
+const PaddingTopDiv = styled.div`
+	padding-top: 60px;
+`
 
 export default ({ children, location, language }) => (
-	<div>
+	<PaddingTopDiv>
 		<GlobalStyle/>
 		<main>
 			<Header location={location} language={language}/>
@@ -16,5 +21,5 @@ export default ({ children, location, language }) => (
 				<p><Link to="/contact-us">Contact us</Link></p>
 			</footer>
 		</main>
-	</div>
+	</PaddingTopDiv>
 )

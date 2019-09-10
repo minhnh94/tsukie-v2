@@ -22,7 +22,6 @@ const StyledLi = styled.li`
 		padding: 14px 16px 18px 16px;
 		text-decoration: none;
 		text-transform: capitalize;
-		box-shadow: none;
 		border-bottom: 2px solid ${props => props.active ? "black" : "transparent"};
 	}
 	
@@ -53,7 +52,6 @@ const NavigationBar = styled.nav`
 const StyledLink = styled(Link)`
 	transition: color 0.2s ease;
 	text-decoration: none;
-	box-shadow: none;
 `
 
 const StyledLogo = styled.img`
