@@ -494,20 +494,9 @@ type MarkdownRemarkFrontmatter {
 	): Date
 	description: String
 	lang: String
-	layout: String
 	tags: [String]
-	thumbnail: String
+	thumbnail: File
 	title: String
-	updated(
-		#Returns the difference between this date and the current time. Defaults to \"milliseconds\" but you can also pass in as the measurement \"years\", \"months\", \"weeks\", \"days\", \"hours\", \"minutes\", and \"seconds\".
-		difference: String,
-		#Format the date using Moment.js' date tokens, e.g. `date(formatString: \"YYYY MMMM DD\")`. See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens.
-		formatString: String,
-		#Returns a string generated with Moment.js' `fromNow` function
-		fromNow: Boolean,
-		#Configures the locale Moment.js will use to format the date.
-		locale: String
-	): Date
 }
 
 type MarkdownRemarkGroupConnection {
@@ -624,41 +613,9 @@ type SitePageConnection {
 
 type SitePageContext {
 	langKey: String
-	next: SitePageContextNext
-	previous: SitePageContextPrevious
+	language: String
 	slug: String
-}
-
-type SitePageContextNext {
-	excerpt: String
-	fields: SitePageContextNextFields
-	frontmatter: SitePageContextNextFrontmatter
-}
-
-type SitePageContextNextFields {
-	slug: String
-}
-
-type SitePageContextNextFrontmatter {
-	date: String
-	description: String
-	title: String
-}
-
-type SitePageContextPrevious {
-	excerpt: String
-	fields: SitePageContextPreviousFields
-	frontmatter: SitePageContextPreviousFrontmatter
-}
-
-type SitePageContextPreviousFields {
-	slug: String
-}
-
-type SitePageContextPreviousFrontmatter {
-	date: String
-	description: String
-	title: String
+	tag: String
 }
 
 type SitePageEdge {
@@ -1036,11 +993,44 @@ enum FileFieldsEnum {
 	childMarkdownRemark___frontmatter___date
 	childMarkdownRemark___frontmatter___description
 	childMarkdownRemark___frontmatter___lang
-	childMarkdownRemark___frontmatter___layout
 	childMarkdownRemark___frontmatter___tags
-	childMarkdownRemark___frontmatter___thumbnail
+	childMarkdownRemark___frontmatter___thumbnail___absolutePath
+	childMarkdownRemark___frontmatter___thumbnail___accessTime
+	childMarkdownRemark___frontmatter___thumbnail___atime
+	childMarkdownRemark___frontmatter___thumbnail___atimeMs
+	childMarkdownRemark___frontmatter___thumbnail___base
+	childMarkdownRemark___frontmatter___thumbnail___birthTime
+	childMarkdownRemark___frontmatter___thumbnail___birthtime
+	childMarkdownRemark___frontmatter___thumbnail___birthtimeMs
+	childMarkdownRemark___frontmatter___thumbnail___blksize
+	childMarkdownRemark___frontmatter___thumbnail___blocks
+	childMarkdownRemark___frontmatter___thumbnail___changeTime
+	childMarkdownRemark___frontmatter___thumbnail___children
+	childMarkdownRemark___frontmatter___thumbnail___ctime
+	childMarkdownRemark___frontmatter___thumbnail___ctimeMs
+	childMarkdownRemark___frontmatter___thumbnail___dev
+	childMarkdownRemark___frontmatter___thumbnail___dir
+	childMarkdownRemark___frontmatter___thumbnail___ext
+	childMarkdownRemark___frontmatter___thumbnail___extension
+	childMarkdownRemark___frontmatter___thumbnail___gid
+	childMarkdownRemark___frontmatter___thumbnail___id
+	childMarkdownRemark___frontmatter___thumbnail___ino
+	childMarkdownRemark___frontmatter___thumbnail___mode
+	childMarkdownRemark___frontmatter___thumbnail___modifiedTime
+	childMarkdownRemark___frontmatter___thumbnail___mtime
+	childMarkdownRemark___frontmatter___thumbnail___mtimeMs
+	childMarkdownRemark___frontmatter___thumbnail___name
+	childMarkdownRemark___frontmatter___thumbnail___nlink
+	childMarkdownRemark___frontmatter___thumbnail___prettySize
+	childMarkdownRemark___frontmatter___thumbnail___publicURL
+	childMarkdownRemark___frontmatter___thumbnail___rdev
+	childMarkdownRemark___frontmatter___thumbnail___relativeDirectory
+	childMarkdownRemark___frontmatter___thumbnail___relativePath
+	childMarkdownRemark___frontmatter___thumbnail___root
+	childMarkdownRemark___frontmatter___thumbnail___size
+	childMarkdownRemark___frontmatter___thumbnail___sourceInstanceName
+	childMarkdownRemark___frontmatter___thumbnail___uid
 	childMarkdownRemark___frontmatter___title
-	childMarkdownRemark___frontmatter___updated
 	childMarkdownRemark___headings
 	childMarkdownRemark___headings___depth
 	childMarkdownRemark___headings___value
@@ -1417,11 +1407,69 @@ enum MarkdownRemarkFieldsEnum {
 	frontmatter___date
 	frontmatter___description
 	frontmatter___lang
-	frontmatter___layout
 	frontmatter___tags
-	frontmatter___thumbnail
+	frontmatter___thumbnail___absolutePath
+	frontmatter___thumbnail___accessTime
+	frontmatter___thumbnail___atime
+	frontmatter___thumbnail___atimeMs
+	frontmatter___thumbnail___base
+	frontmatter___thumbnail___birthTime
+	frontmatter___thumbnail___birthtime
+	frontmatter___thumbnail___birthtimeMs
+	frontmatter___thumbnail___blksize
+	frontmatter___thumbnail___blocks
+	frontmatter___thumbnail___changeTime
+	frontmatter___thumbnail___childImageSharp___children
+	frontmatter___thumbnail___childImageSharp___id
+	frontmatter___thumbnail___childMarkdownRemark___children
+	frontmatter___thumbnail___childMarkdownRemark___excerpt
+	frontmatter___thumbnail___childMarkdownRemark___excerptAst
+	frontmatter___thumbnail___childMarkdownRemark___fileAbsolutePath
+	frontmatter___thumbnail___childMarkdownRemark___headings
+	frontmatter___thumbnail___childMarkdownRemark___html
+	frontmatter___thumbnail___childMarkdownRemark___htmlAst
+	frontmatter___thumbnail___childMarkdownRemark___id
+	frontmatter___thumbnail___childMarkdownRemark___rawMarkdownBody
+	frontmatter___thumbnail___childMarkdownRemark___tableOfContents
+	frontmatter___thumbnail___childMarkdownRemark___timeToRead
+	frontmatter___thumbnail___children
+	frontmatter___thumbnail___children___children
+	frontmatter___thumbnail___children___id
+	frontmatter___thumbnail___ctime
+	frontmatter___thumbnail___ctimeMs
+	frontmatter___thumbnail___dev
+	frontmatter___thumbnail___dir
+	frontmatter___thumbnail___ext
+	frontmatter___thumbnail___extension
+	frontmatter___thumbnail___gid
+	frontmatter___thumbnail___id
+	frontmatter___thumbnail___ino
+	frontmatter___thumbnail___internal___content
+	frontmatter___thumbnail___internal___contentDigest
+	frontmatter___thumbnail___internal___description
+	frontmatter___thumbnail___internal___fieldOwners
+	frontmatter___thumbnail___internal___ignoreType
+	frontmatter___thumbnail___internal___mediaType
+	frontmatter___thumbnail___internal___owner
+	frontmatter___thumbnail___internal___type
+	frontmatter___thumbnail___mode
+	frontmatter___thumbnail___modifiedTime
+	frontmatter___thumbnail___mtime
+	frontmatter___thumbnail___mtimeMs
+	frontmatter___thumbnail___name
+	frontmatter___thumbnail___nlink
+	frontmatter___thumbnail___parent___children
+	frontmatter___thumbnail___parent___id
+	frontmatter___thumbnail___prettySize
+	frontmatter___thumbnail___publicURL
+	frontmatter___thumbnail___rdev
+	frontmatter___thumbnail___relativeDirectory
+	frontmatter___thumbnail___relativePath
+	frontmatter___thumbnail___root
+	frontmatter___thumbnail___size
+	frontmatter___thumbnail___sourceInstanceName
+	frontmatter___thumbnail___uid
 	frontmatter___title
-	frontmatter___updated
 	headings
 	headings___depth
 	headings___value
@@ -1634,17 +1682,9 @@ enum SitePageFieldsEnum {
 	componentChunkName
 	componentPath
 	context___langKey
-	context___next___excerpt
-	context___next___fields___slug
-	context___next___frontmatter___date
-	context___next___frontmatter___description
-	context___next___frontmatter___title
-	context___previous___excerpt
-	context___previous___fields___slug
-	context___previous___frontmatter___date
-	context___previous___frontmatter___description
-	context___previous___frontmatter___title
+	context___language
 	context___slug
+	context___tag
 	id
 	internalComponentName
 	internal___content
@@ -2204,11 +2244,9 @@ input MarkdownRemarkFrontmatterFilterInput {
 	date: DateQueryOperatorInput
 	description: StringQueryOperatorInput
 	lang: StringQueryOperatorInput
-	layout: StringQueryOperatorInput
 	tags: StringQueryOperatorInput
-	thumbnail: StringQueryOperatorInput
+	thumbnail: FileFilterInput
 	title: StringQueryOperatorInput
-	updated: DateQueryOperatorInput
 }
 
 input MarkdownRemarkSortInput {
@@ -2260,41 +2298,9 @@ input SiteFilterInput {
 
 input SitePageContextFilterInput {
 	langKey: StringQueryOperatorInput
-	next: SitePageContextNextFilterInput
-	previous: SitePageContextPreviousFilterInput
+	language: StringQueryOperatorInput
 	slug: StringQueryOperatorInput
-}
-
-input SitePageContextNextFieldsFilterInput {
-	slug: StringQueryOperatorInput
-}
-
-input SitePageContextNextFilterInput {
-	excerpt: StringQueryOperatorInput
-	fields: SitePageContextNextFieldsFilterInput
-	frontmatter: SitePageContextNextFrontmatterFilterInput
-}
-
-input SitePageContextNextFrontmatterFilterInput {
-	date: StringQueryOperatorInput
-	description: StringQueryOperatorInput
-	title: StringQueryOperatorInput
-}
-
-input SitePageContextPreviousFieldsFilterInput {
-	slug: StringQueryOperatorInput
-}
-
-input SitePageContextPreviousFilterInput {
-	excerpt: StringQueryOperatorInput
-	fields: SitePageContextPreviousFieldsFilterInput
-	frontmatter: SitePageContextPreviousFrontmatterFilterInput
-}
-
-input SitePageContextPreviousFrontmatterFilterInput {
-	date: StringQueryOperatorInput
-	description: StringQueryOperatorInput
-	title: StringQueryOperatorInput
+	tag: StringQueryOperatorInput
 }
 
 input SitePageFilterInput {

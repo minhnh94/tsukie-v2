@@ -4,7 +4,13 @@ import Article from "./article"
 
 const FlexSection = styled.section`
 	flex: 1;
-	min-height: 1px;
+	min-height: 1px;	
+	padding-left: 15px;
+	padding-right: 15px;
+	
+	@media (min-width: 992px) {
+		margin-right: 20px;
+	}
 `
 
 export default (props) => {

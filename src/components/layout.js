@@ -5,7 +5,7 @@ import GlobalStyle from "../styles/global-style"
 import styled from "styled-components"
 
 const PaddingTopDiv = styled.div`
-	padding-top: 60px;
+	padding-top: 90px;
 `
 
 export default ({ children, location, language }) => (
