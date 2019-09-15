@@ -9,11 +9,28 @@ const StyledUl = styled.ul`
 	padding: 0;
 	overflow: hidden;
 	float: right;
+	
+	@media (max-width: 991px) {
+		background-color: #333;
+		height: auto;
+		overflow-y: scroll;
+		position: absolute;
+		top: 62px;
+		right: 0;
+		left: 0;
+		display: ${props => props.isToggled ? "block" : "none"};
+	}
 `
 
 const StyledLi = styled.li`
 	float: left;
 	padding-right: 5px;
+	
+	@media (max-width: 991px) {
+		float: none;
+		padding: 0 10px;
+		margin: 0;
+	}
 	
 	a {
 		color: #333;
@@ -23,6 +40,12 @@ const StyledLi = styled.li`
 		text-decoration: none;
 		text-transform: capitalize;
 		border-bottom: 2px solid ${props => props.active ? "black" : "transparent"};
+		
+		@media (max-width: 991px) {
+			color: white;
+			padding: 10px 0;
+			border: 2px solid ${props => props.active ? "white" : "transparent"};
+		}
 	}
 	
 	a:hover {
@@ -63,6 +86,15 @@ const StyledLogo = styled.img`
 	transform: translateY(-50%);
 `
 
+const ToggleNavBtnDiv = styled.div`
+	float: right;
+	font-size: 2rem;
+	
+	@media (min-width: 992px) {
+		display: none;
+	}
+`
+
 const Logo = ({ language }) => {
 	const homeLink = Language[language]["navLinks"]["home"]
 
@@ -73,12 +105,12 @@ const Logo = ({ language }) => {
 	)
 }
 
-const NavigationContent = ({ location, language }) => {
+const NavigationContent = ({ location, language, isToggled }) => {
 	const { navLinks, navTexts } = Language[language]
 	let navKeywords = ["home", "lifestyle", "technologies", "travel", "contactUs"]
 
 	return (
-		<StyledUl>
+		<StyledUl isToggled={isToggled}>
 			{navKeywords.map((keyword) => {
 				if (location.pathname === navLinks[keyword]) {
 					return <StyledLi key={keyword} active><Link to={navLinks[keyword]}>{navTexts[keyword]}</Link></StyledLi>
@@ -90,9 +122,32 @@ const NavigationContent = ({ location, language }) => {
 	)
 }
 
-export default ({ location, language }) => (
-	<NavigationBar>
-		<Logo language={language}/>
-		<NavigationContent location={location} language={language}/>
-	</NavigationBar>
-)
+class Header extends React.Component {
+	constructor(props) {
+		super(props)
+		this.state = {
+			isToggled: false,
+		}
+	}
+
+	setToggledState = () => {
+		this.setState({
+			isToggled: !this.state.isToggled,
+		})
+	}
+
+	render() {
+		const { language, location } = this.props
+
+		return (
+			<NavigationBar>
+				<Logo language={language}/>
+				<ToggleNavBtnDiv onClick={this.setToggledState}>☰</ToggleNavBtnDiv>
+				<NavigationContent location={location} language={language} isToggled={this.state.isToggled}/>
+			</NavigationBar>
+		)
+	}
+}
+
+export default Header
+
