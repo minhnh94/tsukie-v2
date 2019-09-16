@@ -4,12 +4,14 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import ArticleDetail from "../components/article-detail"
+import Container from "../components/container"
+import Sidebar from "../components/sidebar"
 
 class BlogPostTemplate extends React.Component {
 	render() {
 		const post = this.props.data.markdownRemark
 		const siteTitle = this.props.data.site.siteMetadata.title
-		const { previous, next, language } = this.props.pageContext
+		const { language } = this.props.pageContext
 
 		return (
 			<Layout location={this.props.location} title={siteTitle} language={language}>
@@ -17,7 +19,10 @@ class BlogPostTemplate extends React.Component {
 					title={post.frontmatter.title}
 					description={post.frontmatter.description || post.excerpt}
 				/>
-				<ArticleDetail post={post}/>
+				<Container>
+					<ArticleDetail post={post}/>
+					<Sidebar/>
+				</Container>
 			</Layout>
 		)
 	}

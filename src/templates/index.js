@@ -5,6 +5,8 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import FeaturedPosts from "../components/featured-posts"
 import Container from "../components/container"
+import Overview from "../components/overview"
+import Sidebar from "../components/sidebar"
 
 class IndexTemplate extends React.Component {
 	render() {
@@ -17,7 +19,10 @@ class IndexTemplate extends React.Component {
 			<Layout location={location} title={siteTitle} language={language}>
 				<SEO title="All posts"/>
 				<FeaturedPosts/>
-				<Container lang={language} posts={posts}/>
+				<Container>
+					<Overview lang={language} posts={posts}/>
+					<Sidebar/>
+				</Container>
 			</Layout>
 		)
 	}

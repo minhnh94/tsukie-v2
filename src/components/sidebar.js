@@ -10,6 +10,6 @@ const FlexAside = styled.aside`
 
 export default () => (
 	<FlexAside>
-		<div style={{height:"3000px" }}>hahaha</div>
+		<div style={{ height: "3000px" }}>hahaha</div>
 	</FlexAside>
 )

@@ -3,22 +3,14 @@ import { rhythm, scale } from "../utils/typography"
 import styled from "styled-components"
 
 const FlexArticle = styled.article`
-	margin-right: auto;
-	margin-left: auto;
-	padding-right: 15px;
+	flex: 1;
+	min-height: 1px;	
 	padding-left: 15px;
-	//text-align: justify;
-	
-	@media (min-width: 768px) {
-		width: 750px;
-	}
+	padding-right: 15px;
 	
 	@media (min-width: 992px) {
-		width: 970px;
-	}
-		
-	@media (min-width: 1200px) {
-		width: 1170px;
+		margin-right: 20px;
+		width: 60%;	/* don't set this property and some article with code highlight will break layout */
 	}
 `
 
@@ -32,8 +24,7 @@ const ArticleBody = styled.section`
 	}
 
 	.gatsby-highlight pre[class*="language-"].line-numbers {
-	  padding: 0;
-	  padding-left: 2.8em;
+	  padding: 0 0 0 2.8em;
 	  overflow: initial;
 	}
 	

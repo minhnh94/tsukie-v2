@@ -1,6 +1,4 @@
 import React from "react"
-import Overview from "../components/overview"
-import Sidebar from "../components/sidebar"
 import styled from "styled-components"
 
 const FlexDiv = styled.div`
@@ -26,12 +24,10 @@ const FlexDiv = styled.div`
 	}
 `
 
-export default (props) => {
-	const { posts, lang } = props
+export default ({ children }) => {
 	return (
 		<FlexDiv>
-			<Overview lang={lang} posts={posts}/>
-			<Sidebar/>
+			{children}
 		</FlexDiv>
 	)
 }
