@@ -14,6 +14,9 @@ export default {
 			travel: "Travel",
 			contactUs: "Contact Us",
 		},
+		sidebars: {
+			recentPost: "Recent posts",
+		}
 	},
 	ja: {
 		navLinks: {
@@ -30,6 +33,9 @@ export default {
 			travel: "旅行",
 			contactUs: "お問合せ",
 		},
+		sidebars: {
+			recentPost: "最近の記事",
+		}
 	},
 	vi: {
 		navLinks: {
@@ -46,5 +52,8 @@ export default {
 			travel: "Du Lịch",
 			contactUs: "Contact Us",
 		},
+		sidebars: {
+			recentPost: "Bài mới nhất",
+		}
 	},
 }
