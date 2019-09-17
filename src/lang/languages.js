@@ -16,6 +16,7 @@ export default {
 		},
 		sidebars: {
 			recentPost: "Recent posts",
+			allTags: "All tags",
 		}
 	},
 	ja: {
@@ -35,6 +36,7 @@ export default {
 		},
 		sidebars: {
 			recentPost: "最近の記事",
+			allTags: "全てのタグ",
 		}
 	},
 	vi: {
@@ -54,6 +56,7 @@ export default {
 		},
 		sidebars: {
 			recentPost: "Bài mới nhất",
+			allTags: "Tất cả các tags",
 		}
 	},
 }

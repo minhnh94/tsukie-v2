@@ -8,6 +8,7 @@ import Container from "../components/container"
 import Overview from "../components/overview"
 import Sidebar from "../components/sidebar"
 import RecentPostWidget from "../components/recent-post-widget"
+import AllTagsWidget from "../components/all-tags-widget"
 
 class IndexTemplate extends React.Component {
 	render() {
@@ -24,6 +25,7 @@ class IndexTemplate extends React.Component {
 					<Overview lang={language} posts={posts}/>
 					<Sidebar>
 						<RecentPostWidget lang={language} posts={posts}/>
+						<AllTagsWidget edges={posts} lang={language}/>
 					</Sidebar>
 				</Container>
 			</Layout>
