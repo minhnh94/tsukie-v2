@@ -1,6 +1,7 @@
 import React from "react"
 import { rhythm, scale } from "../utils/typography"
 import styled from "styled-components"
+import TagRow from "./tag-row"
 
 const FlexArticle = styled.article`
 	flex: 1;
@@ -47,7 +48,7 @@ const ArticleBody = styled.section`
 	}
 `
 
-export default ({ post }) => {
+export default ({ post, tags, lang }) => {
 	return (
 		<FlexArticle>
 			<header>
@@ -59,6 +60,7 @@ export default ({ post }) => {
 				>
 					{post.frontmatter.title}
 				</h1>
+				<TagRow tags={tags} lang={lang}/>
 				<p
 					style={{
 						...scale(-1 / 5),
