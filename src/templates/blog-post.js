@@ -6,7 +6,7 @@ import SEO from "../components/seo"
 import ArticleDetail from "../components/article-detail"
 import Container from "../components/container"
 import Sidebar from "../components/sidebar"
-import RecentPost from "../components/recent-post"
+import RecentPostWidget from "../components/recent-post-widget"
 
 class BlogPostTemplate extends React.Component {
 	render() {
@@ -25,7 +25,7 @@ class BlogPostTemplate extends React.Component {
 				<Container>
 					<ArticleDetail post={post} tags={tags} lang={language}/>
 					<Sidebar>
-						<RecentPost lang={language} posts={allPosts}/>
+						<RecentPostWidget lang={language} posts={allPosts}/>
 					</Sidebar>
 				</Container>
 			</Layout>

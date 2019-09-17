@@ -7,7 +7,7 @@ import TagPageBanner from "../components/tag-page-banner"
 import Container from "../components/container"
 import Overview from "../components/overview"
 import Sidebar from "../components/sidebar"
-import RecentPost from "../components/recent-post"
+import RecentPostWidget from "../components/recent-post-widget"
 
 class TagIndexTemplate extends React.Component {
 	render() {
@@ -24,7 +24,7 @@ class TagIndexTemplate extends React.Component {
 				<Container>
 					<Overview lang={language} posts={tagPosts}/>
 					<Sidebar>
-						<RecentPost lang={language} posts={allPosts}/>
+						<RecentPostWidget lang={language} posts={allPosts}/>
 					</Sidebar>
 				</Container>
 			</Layout>

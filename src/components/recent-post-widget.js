@@ -3,20 +3,7 @@ import Language from "../lang/languages"
 import styled from "styled-components"
 import Img from "gatsby-image"
 import { Link } from "gatsby"
-
-const WrapperDiv = styled.div`
-	font-size: 14px;
-	margin-bottom: 60px;
-`
-
-const WidgetTitle = styled.h4`
-	border-bottom: 2px solid #e8e8e8;
-	margin-bottom: 30px;
-	padding-bottom: 15px;
-	text-transform: uppercase;
-	position: relative;
-	letter-spacing: 1px;
-`
+import WidgetWrapper from "./widget-wrapper"
 
 const ArticleList = styled.ul`
 	list-style-type: none;
@@ -76,13 +63,12 @@ export default ({ posts, lang }) => {
 	const recentPostTitle = Language[lang].sidebars.recentPost
 
 	return (
-		<WrapperDiv>
-			<WidgetTitle>{recentPostTitle}</WidgetTitle>
+		<WidgetWrapper title={recentPostTitle}>
 			<ArticleList>
 				{posts.slice(0, 5).map(({ node }) => {
 					return <Article node={node} lang={lang}/>
 				})}
 			</ArticleList>
-		</WrapperDiv>
+		</WidgetWrapper>
 	)
 }

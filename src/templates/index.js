@@ -7,7 +7,7 @@ import FeaturedPosts from "../components/featured-posts"
 import Container from "../components/container"
 import Overview from "../components/overview"
 import Sidebar from "../components/sidebar"
-import RecentPost from "../components/recent-post"
+import RecentPostWidget from "../components/recent-post-widget"
 
 class IndexTemplate extends React.Component {
 	render() {
@@ -23,7 +23,7 @@ class IndexTemplate extends React.Component {
 				<Container>
 					<Overview lang={language} posts={posts}/>
 					<Sidebar>
-						<RecentPost lang={language} posts={posts}/>
+						<RecentPostWidget lang={language} posts={posts}/>
 					</Sidebar>
 				</Container>
 			</Layout>
