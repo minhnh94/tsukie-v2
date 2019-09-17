@@ -1,6 +1,6 @@
 import React from "react"
-import { Link } from "gatsby"
 import Header from "./header"
+import Footer from "./footer"
 import GlobalStyle from "../styles/global-style"
 import styled from "styled-components"
 
@@ -14,12 +14,7 @@ export default ({ children, location, language }) => (
 		<main>
 			<Header location={location} language={language}/>
 			{children}
-			<footer>
-				© {new Date().getFullYear()}, Built with
-				{` `}
-				<a href="https://www.gatsbyjs.org">Gatsby</a>
-				<p><Link to="/contact-us">Contact us</Link></p>
-			</footer>
+			<Footer/>
 		</main>
 	</PaddingTopDiv>
 )
