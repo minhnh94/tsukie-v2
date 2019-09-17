@@ -6,10 +6,13 @@ import SEO from "../components/seo"
 import ArticleDetail from "../components/article-detail"
 import Container from "../components/container"
 import Sidebar from "../components/sidebar"
+import RecentPost from "../components/recent-post"
 
 class BlogPostTemplate extends React.Component {
 	render() {
 		const post = this.props.data.markdownRemark
+		const { tags } = post.frontmatter
+		const allPosts = this.props.data.allMarkdownRemark.edges
 		const siteTitle = this.props.data.site.siteMetadata.title
 		const { language } = this.props.pageContext
 
@@ -20,8 +23,10 @@ class BlogPostTemplate extends React.Component {
 					description={post.frontmatter.description || post.excerpt}
 				/>
 				<Container>
-					<ArticleDetail post={post}/>
-					<Sidebar/>
+					<ArticleDetail post={post} tags={tags} lang={language}/>
+					<Sidebar>
+						<RecentPost lang={language} posts={allPosts}/>
+					</Sidebar>
 				</Container>
 			</Layout>
 		)
@@ -31,7 +36,7 @@ class BlogPostTemplate extends React.Component {
 export default BlogPostTemplate
 
 export const pageQuery = graphql`
-	query BlogPostBySlug($slug: String!) {
+	query BlogPostBySlug($slug: String!, $language: String!) {
 		site {
 			siteMetadata {
 				title
@@ -47,6 +52,31 @@ export const pageQuery = graphql`
 				date(formatString: "MMMM DD, YYYY")
 				lang
 				description
+				tags
+			}
+		}
+		allMarkdownRemark(filter: {frontmatter: {lang: {eq: $language}}}, sort: { fields: [frontmatter___date], order: DESC }) {
+			edges {
+				node {
+					excerpt
+					fields {
+						slug
+					}
+					frontmatter {
+						date(formatString: "MMMM DD, YYYY")
+						lang
+						title
+						description
+						tags
+						thumbnail {
+							childImageSharp {
+								fluid (maxWidth:500, quality:50){
+									...GatsbyImageSharpFluid
+								}
+							}
+						}
+					}
+				}
 			}
 		}
 	}
