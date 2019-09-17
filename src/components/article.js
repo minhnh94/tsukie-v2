@@ -31,7 +31,6 @@ const SpacedArticle = styled.article`
 	}
 	
 	margin-bottom: 50px;
-	text-align: justify;
 `
 
 const Thumbnail = ({ articleLink, node }) => (
@@ -57,10 +56,10 @@ export default ({ node, lang, firstTag, title }) => (
 				<small>{node.frontmatter.date}</small>
 			</header>
 			<section>
-				<p
-					dangerouslySetInnerHTML={{
-						__html: node.frontmatter.description || node.excerpt,
-					}}
+				<p style={{ textAlign: "justify" }}
+				   dangerouslySetInnerHTML={{
+					   __html: node.frontmatter.description || node.excerpt,
+				   }}
 				/>
 			</section>
 		</ContentDiv>

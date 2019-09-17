@@ -25,7 +25,7 @@ export default {
 			lifestyle: "/ja/tags/jinsei-seikatsu/",
 			technologies: "/ja/tags/gijutsu/",
 			travel: "/ja/tags/ryoko/",
-			contactUs: "/contact-us/",
+			contactUs: "/ja/contact-us/",
 		},
 		navTexts: {
 			home: "ホーム",
@@ -45,7 +45,7 @@ export default {
 			lifestyle: "/vi/tags/cuoc-song/",
 			technologies: "/vi/tags/cong-nghe/",
 			travel: "/vi/tags/du-lich/",
-			contactUs: "/contact-us/",
+			contactUs: "/vi/contact-us/",
 		},
 		navTexts: {
 			home: "Trang Chủ",

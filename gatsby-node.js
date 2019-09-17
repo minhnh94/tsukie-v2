@@ -77,6 +77,15 @@ exports.createPages = async ({ graphql, actions }) => {
 			})
 		})
 	})
+
+	// Create misc pages
+	languages.forEach((language) => {
+		createPage({
+			path: language === "en" ? "/contact-us" : `/${language}/contact-us`,
+			component: path.resolve("./src/templates/contact-us.js"),
+			context: { language: language },
+		})
+	})
 }
 
 exports.onCreateNode = ({ node, actions, getNode }) => {

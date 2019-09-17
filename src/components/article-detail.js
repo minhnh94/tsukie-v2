@@ -2,18 +2,7 @@ import React from "react"
 import { rhythm, scale } from "../utils/typography"
 import styled from "styled-components"
 import TagRow from "./tag-row"
-
-const FlexArticle = styled.article`
-	flex: 1;
-	min-height: 1px;	
-	padding-left: 15px;
-	padding-right: 15px;
-	
-	@media (min-width: 992px) {
-		margin-right: 20px;
-		width: 60%;	/* don't set this property and some article with code highlight will break layout */
-	}
-`
+import FlexArticle from "./flex-article"
 
 const ArticleBody = styled.section`
 	.gatsby-highlight {
