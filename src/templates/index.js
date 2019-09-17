@@ -7,8 +7,8 @@ import FeaturedPosts from "../components/featured-posts"
 import Container from "../components/container"
 import Overview from "../components/overview"
 import Sidebar from "../components/sidebar"
-import RecentPostWidget from "../components/recent-post-widget"
-import AllTagsWidget from "../components/all-tags-widget"
+import RecentPostWidget from "../components/widgets/recent-post-widget"
+import AllTagsWidget from "../components/widgets/all-tags-widget"
 
 class IndexTemplate extends React.Component {
 	render() {

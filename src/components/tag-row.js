@@ -14,16 +14,16 @@ const Tag = styled.span`
 `
 
 export default ({ tags, lang }) => {
-	tags = tags.map(function(tag) {
+	const tagWords = tags.map(function(tag) {
 		return tag.replace(/-/g, " ")
 	})
 
 	return (
 		<div style={{ margin: "10px 0 10px 0" }}>
-			{tags.map(function(tag) {
+			{tags.map(function(tag, index) {
 				return (
 					<Tag>
-						<Link style={{ color: "white" }} to={lang === "en" ? `/tags/${tag}` : `/${lang}/tags/${tag}`}>{tag}</Link>
+						<Link style={{ color: "white" }} to={lang === "en" ? `/tags/${tag}` : `/${lang}/tags/${tag}`}>{tagWords[index]}</Link>
 					</Tag>
 				)
 			})}

@@ -1,5 +1,5 @@
 import React from "react"
-import Language from "../lang/languages"
+import Language from "../../lang/languages"
 import styled from "styled-components"
 import Img from "gatsby-image"
 import { Link } from "gatsby"
