@@ -23,6 +23,10 @@ const ArticleBody = styled.section`
 		white-space: normal;
 	}
 	
+	h3 {
+		margin-bottom: 10px;
+	}
+	
 	p {
 		text-align: justify;
 		
