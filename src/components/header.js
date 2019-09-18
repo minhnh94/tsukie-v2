@@ -18,6 +18,7 @@ const StyledUl = styled.ul`
 		top: 62px;
 		right: 0;
 		left: 0;
+		padding: 10px 0;
 		display: ${props => props.isToggled ? "block" : "none"};
 	}
 `

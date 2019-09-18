@@ -35,6 +35,15 @@ const ArticleBody = styled.section`
 			}
 		}
 	}
+	
+	.md-figure {
+		figcaption {
+			color: #a2a2a2;
+			display: block;
+			font-size: 0.85rem;
+			text-align: center;
+		}
+	}
 `
 
 export default ({ post, tags, lang }) => {
