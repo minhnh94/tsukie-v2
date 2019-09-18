@@ -36,18 +36,34 @@ exports.createPages = async ({ graphql, actions }) => {
 		throw result.errors
 	}
 
+	const posts = result.data.allMarkdownRemark.edges
+	const postsPerPage = 8
+
 	// Create index pages
 	const languages = ["en", "vi", "ja"]
 	languages.forEach((language) => {
-		createPage({
-			path: language === "en" ? "/" : `/${language}/`,
-			component: path.resolve("./src/templates/index.js"),
-			context: { language: language },
+		const thisLangPosts = posts.filter((post) => {
+			return post.node.frontmatter.lang === language
+		})
+		const numPages = Math.ceil(thisLangPosts.length / postsPerPage)
+
+		Array.from({ length: numPages }).forEach((_, i) => {
+			const linkWithLang = language === "en" ? "/" : `/${language}/`
+			createPage({
+				path: i === 0 ? linkWithLang : `${linkWithLang}${i + 1}`,
+				component: path.resolve("./src/templates/index.js"),
+				context: {
+					language: language,
+					limit: postsPerPage,
+					skip: i * postsPerPage,
+					numPages,
+					currentPage: i + 1,
+				},
+			})
 		})
 	})
 
 	// Create blog posts pages.
-	const posts = result.data.allMarkdownRemark.edges
 	posts.forEach((post, index) => {
 		const previous = index === posts.length - 1 ? null : posts[index + 1].node
 		const next = index === 0 ? null : posts[index - 1].node
@@ -70,10 +86,25 @@ exports.createPages = async ({ graphql, actions }) => {
 		const tags = getAllTagsWithLanguage(result.data.allMarkdownRemark.edges, language)
 		console.log(tags)
 		tags.forEach((tag) => {
-			createPage({
-				path: language === "en" ? `/tags/${tag}` : `/${language}/tags/${tag}`,
-				component: path.resolve("./src/templates/tag-index.js"),
-				context: { language: language, tag: tag },
+			const thisTagPosts = posts.filter((post) => {
+				return post.node.frontmatter.lang === language && post.node.frontmatter.tags.includes(tag)
+			})
+			const numPages = Math.ceil(thisTagPosts.length / postsPerPage)
+
+			Array.from({ length: numPages }).forEach((_, i) => {
+				const linkWithLang = language === "en" ? `/tags/${tag}` : `/${language}/tags/${tag}`
+				createPage({
+					path: i === 0 ? linkWithLang : `${linkWithLang}${i + 1}`,
+					component: path.resolve("./src/templates/tag-index.js"),
+					context: {
+						language: language,
+						tag: tag,
+						limit: postsPerPage,
+						skip: i * postsPerPage,
+						numPages,
+						currentPage: i + 1,
+					},
+				})
 			})
 		})
 	})

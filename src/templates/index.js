@@ -15,17 +15,31 @@ class IndexTemplate extends React.Component {
 		const { data, pageContext, location } = this.props
 		const { language } = pageContext
 		const siteTitle = data.site.siteMetadata.title
-		const posts = data.allMarkdownRemark.edges
+		const limitedPosts = data.limitedPosts.edges
+		const allPosts = data.allPosts.edges
+
+		const { currentPage, numPages } = this.props.pageContext
+		const linkWithLang = language === "en" ? "/" : `/${language}/`
+		const isFirst = currentPage === 1
+		const isLast = currentPage === numPages
+		const prevPage = currentPage - 1 === 1 ? `${linkWithLang}` : `${linkWithLang}${currentPage - 1}`
+		const nextPage = `${linkWithLang}${currentPage + 1}`
+		const pagingData = {
+			isFirst,
+			isLast,
+			prevPage,
+			nextPage,
+		}
 
 		return (
 			<Layout location={location} title={siteTitle} language={language}>
 				<SEO title="All posts"/>
 				<FeaturedPosts/>
 				<Container>
-					<Overview lang={language} posts={posts}/>
+					<Overview lang={language} posts={limitedPosts} pagingData={pagingData}/>
 					<Sidebar>
-						<RecentPostWidget lang={language} posts={posts}/>
-						<AllTagsWidget edges={posts} lang={language}/>
+						<RecentPostWidget lang={language} posts={allPosts}/>
+						<AllTagsWidget edges={allPosts} lang={language}/>
 					</Sidebar>
 				</Container>
 			</Layout>
@@ -36,13 +50,42 @@ class IndexTemplate extends React.Component {
 export default IndexTemplate
 
 export const pageQuery = graphql`
-	query IndexByLang($language: String!) {
+	query IndexByLang($language: String!, $skip: Int!, $limit: Int!) {
 		site {
 			siteMetadata {
 				title
 			}
 		}
-		allMarkdownRemark(filter: {frontmatter: {lang: {eq: $language}}}, sort: { fields: [frontmatter___date], order: DESC }) {
+		allPosts: allMarkdownRemark(filter: {frontmatter: {lang: {eq: $language}}}, sort: { fields: [frontmatter___date], order: DESC }) {
+			edges {
+				node {
+					excerpt
+					fields {
+						slug
+					}
+					frontmatter {
+						date(formatString: "MMMM DD, YYYY")
+						lang
+						title
+						description
+						tags
+						thumbnail {
+							childImageSharp {
+								fluid (maxWidth:500, quality:50){
+									...GatsbyImageSharpFluid
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		limitedPosts: allMarkdownRemark(
+			filter: {frontmatter: {lang: {eq: $language}}},
+			sort: { fields: [frontmatter___date], order: DESC },
+			limit: $limit,
+			skip: $skip
+		) {
 			edges {
 				node {
 					excerpt

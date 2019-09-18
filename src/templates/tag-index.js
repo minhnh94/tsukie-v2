@@ -13,17 +13,29 @@ import AllTagsWidget from "../components/widgets/all-tags-widget"
 class TagIndexTemplate extends React.Component {
 	render() {
 		const { data, pageContext, location } = this.props
-		const { language } = pageContext
+		const { language, currentPage, numPages, tag } = pageContext
 		const siteTitle = data.site.siteMetadata.title
 		const tagPosts = data.tagPosts.edges
 		const allPosts = data.allPosts.edges
+
+		const linkWithLang = language === "en" ? `/tags/${tag}` : `/${language}/tags/${tag}`
+		const isFirst = currentPage === 1
+		const isLast = currentPage === numPages
+		const prevPage = currentPage - 1 === 1 ? `${linkWithLang}` : `${linkWithLang}${currentPage - 1}`
+		const nextPage = `${linkWithLang}${currentPage + 1}`
+		const pagingData = {
+			isFirst,
+			isLast,
+			prevPage,
+			nextPage,
+		}
 
 		return (
 			<Layout location={location} title={siteTitle} language={language}>
 				<SEO title="All posts"/>
 				<TagPageBanner/>
 				<Container>
-					<Overview lang={language} posts={tagPosts}/>
+					<Overview lang={language} posts={tagPosts} pagingData={pagingData}/>
 					<Sidebar>
 						<RecentPostWidget lang={language} posts={allPosts}/>
 						<AllTagsWidget edges={allPosts} lang={language}/>
@@ -37,13 +49,18 @@ class TagIndexTemplate extends React.Component {
 export default TagIndexTemplate
 
 export const pageQuery = graphql`
-	query IndexByLangAndTag($language: String!, $tag: String!) {
+	query IndexByLangAndTag($language: String!, $tag: String!, $limit: Int!, $skip: Int!) {
 		site {
 			siteMetadata {
 				title
 			}
 		}
-		tagPosts: allMarkdownRemark(filter: {frontmatter: {lang: {eq: $language}, tags: {eq: $tag}}}, sort: { fields: [frontmatter___date], order: DESC }) {
+		tagPosts: allMarkdownRemark(
+			filter: {frontmatter: {lang: {eq: $language}, tags: {eq: $tag}}},
+			sort: { fields: [frontmatter___date], order: DESC },
+			limit: $limit,
+			skip: $skip
+		) {
 			edges {
 				node {
 					excerpt

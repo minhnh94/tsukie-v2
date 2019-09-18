@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import Article from "./article"
+import { Link } from "gatsby"
 
 const FlexSection = styled.section`
 	flex: 1;
@@ -13,8 +14,39 @@ const FlexSection = styled.section`
 	}
 `
 
-export default (props) => {
-	const { posts, lang } = props
+const Paginator = styled.div`
+	position: relative;
+	height: 50px;
+	margin-bottom: 20px;
+
+	.prev {
+		background-color: #007acc;
+		box-shadow: 3px 3px 3px #888888;
+		padding: 8px;
+		color: white;
+		display: block;
+		position: absolute;
+		left: 0;
+	}
+	
+	.next {
+		background-color: #007acc;
+		box-shadow: 3px 3px 3px #888888;
+		padding: 8px;
+		color: white;
+		display: block;
+		position: absolute;
+		right: 0;
+	}
+`
+
+export default ({ posts, lang, pagingData }) => {
+	const {
+		isFirst,
+		isLast,
+		prevPage,
+		nextPage,
+	} = pagingData
 
 	return (
 		<FlexSection>
@@ -24,6 +56,18 @@ export default (props) => {
 
 				return <Article node={node} lang={lang} firstTag={firstTag} title={title}/>
 			})}
+			<Paginator>
+				{!isFirst && (
+					<Link to={prevPage} rel="prev" className="prev">
+						← Previous Page
+					</Link>
+				)}
+				{!isLast && (
+					<Link to={nextPage} rel="next" className="next">
+						Next Page →
+					</Link>
+				)}
+			</Paginator>
 		</FlexSection>
 	)
 }
