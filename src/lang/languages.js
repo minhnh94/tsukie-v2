@@ -1,5 +1,6 @@
 export default {
 	en: {
+		displayText: "English",
 		navLinks: {
 			home: "/",
 			lifestyle: "/tags/lifestyle/",
@@ -20,6 +21,7 @@ export default {
 		}
 	},
 	ja: {
+		displayText: "日本語",
 		navLinks: {
 			home: "/ja",
 			lifestyle: "/ja/tags/jinsei-seikatsu/",
@@ -40,6 +42,7 @@ export default {
 		}
 	},
 	vi: {
+		displayText: "Tiếng Việt",
 		navLinks: {
 			home: "/vi",
 			lifestyle: "/vi/tags/cuoc-song/",

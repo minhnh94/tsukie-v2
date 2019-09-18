@@ -2,6 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import Article from "./article"
 import { Link } from "gatsby"
+import LanguageSelector from "./language-selector"
 
 const FlexSection = styled.section`
 	flex: 1;
@@ -50,6 +51,7 @@ export default ({ posts, lang, pagingData }) => {
 
 	return (
 		<FlexSection>
+			<LanguageSelector/>
 			{posts.map(({ node }) => {
 				const title = node.frontmatter.title || node.fields.slug
 				const firstTag = node.frontmatter.tags[0]

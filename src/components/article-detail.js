@@ -3,6 +3,7 @@ import { rhythm, scale } from "../utils/typography"
 import styled from "styled-components"
 import TagRow from "./tag-row"
 import FlexArticle from "./flex-article"
+import LanguageSelector from "./language-selector"
 
 const ArticleBody = styled.section`
 	.gatsby-highlight {
@@ -53,6 +54,7 @@ const ArticleBody = styled.section`
 export default ({ post, tags, lang }) => {
 	return (
 		<FlexArticle>
+			<LanguageSelector/>
 			<header>
 				<h1
 					style={{
