@@ -24,7 +24,7 @@ class BlogPostTemplate extends React.Component {
 					description={post.frontmatter.description || post.excerpt}
 				/>
 				<Container>
-					<ArticleDetail post={post} tags={tags} lang={language}/>
+					<ArticleDetail post={post} tags={tags} lang={language} location={this.props.location}/>
 					<Sidebar>
 						<RecentPostWidget lang={language} posts={allPosts}/>
 						<AllTagsWidget edges={allPosts} lang={language}/>

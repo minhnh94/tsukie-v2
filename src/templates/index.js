@@ -36,7 +36,7 @@ class IndexTemplate extends React.Component {
 				<SEO title="All posts"/>
 				<FeaturedPosts/>
 				<Container>
-					<Overview lang={language} posts={limitedPosts} pagingData={pagingData}/>
+					<Overview lang={language} posts={limitedPosts} pagingData={pagingData} location={location}/>
 					<Sidebar>
 						<RecentPostWidget lang={language} posts={allPosts}/>
 						<AllTagsWidget edges={allPosts} lang={language}/>

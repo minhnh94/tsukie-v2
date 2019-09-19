@@ -21,7 +21,7 @@ const ArticleBody = styled.section`
 	
 	.language-text {
 		word-break: break-word;
-		white-space: normal;
+		white-space: pre-wrap;
 	}
 	
 	h3 {
@@ -51,19 +51,19 @@ const ArticleBody = styled.section`
 	}
 `
 
-export default ({ post, tags, lang }) => {
+export default ({ post, tags, lang, location }) => {
 	return (
 		<FlexArticle>
-			<LanguageSelector/>
+			<LanguageSelector location={location}/>
 			<header>
-				<h1
+				<h2
 					style={{
 						marginTop: rhythm(1),
 						marginBottom: 0,
 					}}
 				>
 					{post.frontmatter.title}
-				</h1>
+				</h2>
 				<TagRow tags={tags} lang={lang}/>
 				<p
 					style={{

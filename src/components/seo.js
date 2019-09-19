@@ -67,6 +67,14 @@ function SEO({ description, lang, meta, title }) {
           name: `twitter:description`,
           content: metaDescription,
         },
+        {
+          name: `dmca-site-verification`,
+          content: process.env.GATSBY_DMCA_UID,
+        },
+        {
+          name: `yandex-verification`,
+          content: process.env.GATSBY_YANDEX_UID,
+        },
       ].concat(meta)}
     />
   )

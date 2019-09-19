@@ -16,9 +16,9 @@ const LangButton = styled(Link)`
 	box-shadow:
 ${props => {
 	const { location, lang } = props
-	if (lang !== "en" && location.includes(lang)) {
+	if (lang !== "en" && location.includes(`/${lang}/`)) {
 		return "none"
-	} else if (lang === "en" && (!location.includes("ja") && !location.includes("vi"))) {
+	} else if (lang === "en" && (!location.includes("/ja/") && !location.includes("/vi/"))) {
 		return "none"
 	} else {
 		return "3px 3px 3px #888888"
@@ -30,17 +30,17 @@ ${props => {
 	text-align: center;
 `
 
-export default () => {
+export default ({location}) => {
 	const allLangs = ["en", "vi", "ja"]
-	const location = window.location.pathname
+	const pathname = location.pathname
 
 	return (
 		<LangSelector>
 			{allLangs.map((lang) => {
 				return (
 					<LangButton
-						to={lang === "en" ? "/" : `/${lang}/`}
-						location={location}
+						to={lang === "en" ? "/" : `/${lang}`}
+						location={pathname}
 						lang={lang}
 					>
 						{Language[lang].displayText}

@@ -41,7 +41,7 @@ const Paginator = styled.div`
 	}
 `
 
-export default ({ posts, lang, pagingData }) => {
+export default ({ posts, lang, pagingData, location }) => {
 	const {
 		isFirst,
 		isLast,
@@ -51,7 +51,7 @@ export default ({ posts, lang, pagingData }) => {
 
 	return (
 		<FlexSection>
-			<LanguageSelector/>
+			<LanguageSelector location={location}/>
 			{posts.map(({ node }) => {
 				const title = node.frontmatter.title || node.fields.slug
 				const firstTag = node.frontmatter.tags[0]

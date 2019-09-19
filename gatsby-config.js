@@ -1,11 +1,14 @@
+require("dotenv").config({
+	path: `.env.${process.env.NODE_ENV}`,
+})
 module.exports = {
 	siteMetadata: {
 		title: `Tsukie - Lifestyle, technologies, travel... and more`,
-		author: `Kyle Mathews`,
-		description: `A starter blog demonstrating what Gatsby can do.`,
-		siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
+		author: `minhnh`,
+		description: `Tsukie - Blog from Tsukie studio. Written articles about lifestyles, technologies (mostly software programming related), travel (contents mostly Japan related), entertainment (anime, game, etc).`,
+		siteUrl: process.env.WEBSITE,
 		social: {
-			twitter: `kylemathews`,
+			twitter: `minhnh94`,
 		},
 	},
 	plugins: [
@@ -35,7 +38,7 @@ module.exports = {
 					},
 					{
 						resolve: `gatsby-remark-figure-caption`,
-						options: {figureClassName: 'md-figure'},
+						options: { figureClassName: "md-figure" },
 					},
 					{
 						resolve: `gatsby-remark-responsive-iframe`,
@@ -60,7 +63,7 @@ module.exports = {
 		{
 			resolve: `gatsby-plugin-google-analytics`,
 			options: {
-				//trackingId: `ADD YOUR TRACKING ID HERE`,
+				trackingId: process.env.GA_TRACKING_UID,
 			},
 		},
 		`gatsby-plugin-feed`,
@@ -90,9 +93,10 @@ module.exports = {
 		{
 			resolve: `gatsby-plugin-i18n`,
 			options: {
-				langKeyDefault: 'en',
-				useLangKeyLayout: false
-			}
+				langKeyDefault: "en",
+				useLangKeyLayout: false,
+			},
 		},
+		`gatsby-plugin-sitemap`,
 	],
 }

@@ -35,7 +35,7 @@ class TagIndexTemplate extends React.Component {
 				<SEO title="All posts"/>
 				<TagPageBanner/>
 				<Container>
-					<Overview lang={language} posts={tagPosts} pagingData={pagingData}/>
+					<Overview lang={language} posts={tagPosts} pagingData={pagingData} location={location}/>
 					<Sidebar>
 						<RecentPostWidget lang={language} posts={allPosts}/>
 						<AllTagsWidget edges={allPosts} lang={language}/>
