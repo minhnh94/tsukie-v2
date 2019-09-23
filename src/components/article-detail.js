@@ -6,8 +6,12 @@ import FlexArticle from "./flex-article"
 import LanguageSelector from "./language-selector"
 import { DiscussionEmbed, CommentCount } from "disqus-react"
 import { TwitterShareButton } from "react-twitter-embed"
+import AdSense from "react-adsense"
+import ErrorBoundary from "./error-boundary"
 
 const ArticleBody = styled.section`
+	overflow-x: hidden;
+
 	.gatsby-highlight {
 	  background-color: #fdf6e3;
 	  border-radius: 0.3em;
@@ -74,6 +78,15 @@ export default ({ post, tags, lang, location }) => {
 				>
 					{post.frontmatter.title}
 				</h2>
+				<ErrorBoundary>
+					<AdSense.Google
+						client={process.env.GATSBY_ADSENSE_CLIENT}
+						slot={process.env.GATSBY_ADSENSE_SLOT}
+						style={{ display: "inline-block", height: "50px", width: "100%" }}
+						format='auto'
+						responsive='true'
+					/>
+				</ErrorBoundary>
 				<TagRow tags={tags} lang={lang}/>
 				<p
 					style={{

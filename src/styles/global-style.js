@@ -26,4 +26,8 @@ export default createGlobalStyle`
 		margin-bottom: 0;
 		line-height: 1.25em;
 	}
+	
+	ins {
+		background: ${process.env.GATSBY_ADSENSE_BGCOLOR};
+	}
 `

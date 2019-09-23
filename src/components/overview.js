@@ -3,6 +3,8 @@ import styled from "styled-components"
 import Article from "./article"
 import { Link } from "gatsby"
 import LanguageSelector from "./language-selector"
+import AdSense from "react-adsense"
+import ErrorBoundary from "./error-boundary"
 
 const FlexSection = styled.section`
 	flex: 1;
@@ -51,6 +53,15 @@ export default ({ posts, lang, pagingData, location }) => {
 
 	return (
 		<FlexSection>
+			<ErrorBoundary>
+				<AdSense.Google
+					client={process.env.GATSBY_ADSENSE_CLIENT}
+					slot={process.env.GATSBY_ADSENSE_SLOT}
+					style={{ display: "inline-block", marginBottom: "20px", height: "50px", width: "100%" }}
+					format='auto'
+					responsive='true'
+				/>
+			</ErrorBoundary>
 			<LanguageSelector location={location}/>
 			{posts.map(({ node }) => {
 				const title = node.frontmatter.title || node.fields.slug
