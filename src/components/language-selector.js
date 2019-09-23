@@ -16,9 +16,9 @@ const LangButton = styled(Link)`
 	box-shadow:
 ${props => {
 	const { location, lang } = props
-	if (lang !== "en" && location.includes(`/${lang}/`)) {
+	if (lang !== "en" && location.includes(`/${lang}`)) {
 		return "none"
-	} else if (lang === "en" && (!location.includes("/ja/") && !location.includes("/vi/"))) {
+	} else if (lang === "en" && (!location.includes("/ja") && !location.includes("/vi"))) {
 		return "none"
 	} else {
 		return "3px 3px 3px #888888"

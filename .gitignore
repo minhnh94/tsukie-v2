@@ -71,3 +71,11 @@ yarn-error.log
 
 # Content of the blog will be stored in another repository so we ignore it here
 content
+
+# Other misc files
+.env.development
+.env.production
+scripts
+static/ads.txt
+static/googlee1e3ed4981f080ed.html
+static/CNAME
