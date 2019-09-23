@@ -46,6 +46,9 @@ export const pageQuery = graphql`
 			}
 		}
 		markdownRemark(fields: { slug: { eq: $slug } }) {
+			fields {
+				slug
+			}
 			id
 			excerpt(pruneLength: 160)
 			html

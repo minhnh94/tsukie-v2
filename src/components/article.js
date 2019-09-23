@@ -3,6 +3,7 @@ import { Link } from "gatsby"
 import styled from "styled-components"
 import Img from "gatsby-image"
 import TagRow from "./tag-row"
+import { CommentCount } from "disqus-react"
 
 const ResponsiveImg = styled(Img)`
 	display: block;
@@ -39,30 +40,39 @@ const Thumbnail = ({ articleLink, node }) => (
 	</Link>
 )
 
-export default ({ node, lang, firstTag, title }) => (
-	<SpacedArticle key={node.fields.slug}>
-		<Thumbnail
-			articleLink={`/${lang}/${firstTag}${node.fields.slug}`}
-			node={node}
-		/>
-		<ContentDiv>
-			<header>
-				<h3>
-					<Link to={`/${lang}/${firstTag}${node.fields.slug}`}>
-						{title}
-					</Link>
-				</h3>
-				<TagRow tags={node.frontmatter.tags} lang={node.frontmatter.lang}/>
-				<small>{node.frontmatter.date}</small>
-			</header>
-			<section>
-				<p style={{ textAlign: "justify" }}
-				   dangerouslySetInnerHTML={{
-					   __html: node.frontmatter.description || node.excerpt,
-				   }}
-				/>
-			</section>
-		</ContentDiv>
-	</SpacedArticle>
-)
+export default ({ node, lang, firstTag, title }) => {
+	const disqusConfig = {
+		shortname: process.env.GATSBY_DISQUS_NAME,
+		config: {
+			identifier: node.fields.slug.replace(/\//g, ""),
+			url: `${process.env.GATSBY_DISQUS_WEBSITE}/${lang}/${firstTag}${node.fields.slug}`,
+		},
+	}
 
+	return (
+		<SpacedArticle key={node.fields.slug}>
+			<Thumbnail
+				articleLink={`/${lang}/${firstTag}${node.fields.slug}`}
+				node={node}
+			/>
+			<ContentDiv>
+				<header>
+					<h3>
+						<Link to={`/${lang}/${firstTag}${node.fields.slug}`}>
+							{title}
+						</Link>
+					</h3>
+					<TagRow tags={node.frontmatter.tags} lang={node.frontmatter.lang}/>
+					<small>{node.frontmatter.date} - <CommentCount {...disqusConfig}/></small>
+				</header>
+				<section>
+					<p style={{ textAlign: "justify" }}
+					   dangerouslySetInnerHTML={{
+						   __html: node.frontmatter.description || node.excerpt,
+					   }}
+					/>
+				</section>
+			</ContentDiv>
+		</SpacedArticle>
+	)
+}

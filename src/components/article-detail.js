@@ -4,6 +4,7 @@ import styled from "styled-components"
 import TagRow from "./tag-row"
 import FlexArticle from "./flex-article"
 import LanguageSelector from "./language-selector"
+import { DiscussionEmbed, CommentCount } from "disqus-react"
 
 const ArticleBody = styled.section`
 	.gatsby-highlight {
@@ -52,6 +53,14 @@ const ArticleBody = styled.section`
 `
 
 export default ({ post, tags, lang, location }) => {
+	const disqusConfig = {
+		shortname: process.env.GATSBY_DISQUS_NAME,
+		config: {
+			identifier: post.fields.slug.replace(/\//g, ""),
+			url: `${process.env.GATSBY_DISQUS_WEBSITE}${location.pathname}`,
+		},
+	}
+
 	return (
 		<FlexArticle>
 			<LanguageSelector location={location}/>
@@ -72,7 +81,7 @@ export default ({ post, tags, lang, location }) => {
 						marginBottom: rhythm(1),
 					}}
 				>
-					{post.frontmatter.date}
+					{post.frontmatter.date} - <CommentCount {...disqusConfig}/>
 				</p>
 			</header>
 			<ArticleBody dangerouslySetInnerHTML={{ __html: post.html }}/>
@@ -82,6 +91,7 @@ export default ({ post, tags, lang, location }) => {
 				}}
 			/>
 			<footer>
+				<DiscussionEmbed {...disqusConfig}/>
 			</footer>
 		</FlexArticle>
 	)
