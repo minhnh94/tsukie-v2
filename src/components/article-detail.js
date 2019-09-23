@@ -5,6 +5,7 @@ import TagRow from "./tag-row"
 import FlexArticle from "./flex-article"
 import LanguageSelector from "./language-selector"
 import { DiscussionEmbed, CommentCount } from "disqus-react"
+import { TwitterShareButton } from "react-twitter-embed"
 
 const ArticleBody = styled.section`
 	.gatsby-highlight {
@@ -91,6 +92,16 @@ export default ({ post, tags, lang, location }) => {
 				}}
 			/>
 			<footer>
+				<div>
+					<iframe
+						src={`https://www.facebook.com/plugins/like.php?href=${process.env.GATSBY_DISQUS_WEBSITE}${location.pathname}&width=124&layout=button_count&action=like&size=small&show_faces=true&share=true&height=46&appId=1289989531028226`}
+						width="124" height="46" style={{ border: "none", overflow: "hidden", margin: "auto", display: "block" }}
+						scrolling="no" frameBorder="0"
+						allowTransparency="true" allow="encrypted-media"/>
+					<div style={{ display: "block", width: "10%", margin: "auto" }}>
+						<TwitterShareButton url={`${process.env.GATSBY_DISQUS_WEBSITE}${location.pathname}`}/>
+					</div>
+				</div>
 				<DiscussionEmbed {...disqusConfig}/>
 			</footer>
 		</FlexArticle>
