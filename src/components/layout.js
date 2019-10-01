@@ -14,7 +14,7 @@ export default ({ children, location, language }) => (
 		<main>
 			<Header location={location} language={language}/>
 			{children}
-			<Footer/>
+			<Footer language={language}/>
 		</main>
 	</PaddingTopDiv>
 )
