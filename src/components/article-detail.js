@@ -5,7 +5,6 @@ import TagRow from "./tag-row"
 import FlexArticle from "./flex-article"
 import LanguageSelector from "./language-selector"
 import { DiscussionEmbed, CommentCount } from "disqus-react"
-import { TwitterShareButton } from "react-twitter-embed"
 import AdSense from "react-adsense"
 import ErrorBoundary from "./error-boundary"
 
@@ -82,7 +81,7 @@ export default ({ post, tags, lang, location }) => {
 					<AdSense.Google
 						client={process.env.GATSBY_ADSENSE_CLIENT}
 						slot={process.env.GATSBY_ADSENSE_SLOT}
-						style={{ display: "inline-block", height: "50px", width: "100%" }}
+						style={{ display: "block", height: "50px", width: "100%", margin: "10px 0" }}
 						format='auto'
 						responsive='true'
 					/>
@@ -111,9 +110,6 @@ export default ({ post, tags, lang, location }) => {
 						width="124" height="46" style={{ border: "none", overflow: "hidden", margin: "auto", display: "block" }}
 						scrolling="no" frameBorder="0"
 						allowTransparency="true" allow="encrypted-media"/>
-					<div style={{ display: "block", width: "10%", margin: "auto" }}>
-						<TwitterShareButton url={`${process.env.GATSBY_DISQUS_WEBSITE}${location.pathname}`}/>
-					</div>
 				</div>
 				<DiscussionEmbed {...disqusConfig}/>
 			</footer>

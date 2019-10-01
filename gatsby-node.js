@@ -116,6 +116,16 @@ exports.createPages = async ({ graphql, actions }) => {
 			component: path.resolve("./src/templates/contact-us.js"),
 			context: { language: language },
 		})
+		createPage({
+			path: language === "en" ? "/privacy-policy" : `/${language}/privacy-policy`,
+			component: path.resolve("./src/templates/privacy-policy.js"),
+			context: { language: language },
+		})
+		createPage({
+			path: language === "en" ? "/terms-and-conditions" : `/${language}/terms-and-conditions`,
+			component: path.resolve("./src/templates/terms-conditions.js"),
+			context: { language: language },
+		})
 	})
 }
 

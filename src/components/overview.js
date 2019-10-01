@@ -11,6 +11,7 @@ const FlexSection = styled.section`
 	min-height: 1px;	
 	padding-left: 15px;
 	padding-right: 15px;
+	overflow-x: hidden;		/* without this adsense will break the responsive layout */
 	
 	@media (min-width: 992px) {
 		margin-right: 20px;
@@ -57,7 +58,7 @@ export default ({ posts, lang, pagingData, location }) => {
 				<AdSense.Google
 					client={process.env.GATSBY_ADSENSE_CLIENT}
 					slot={process.env.GATSBY_ADSENSE_SLOT}
-					style={{ display: "inline-block", marginBottom: "20px", height: "50px", width: "100%" }}
+					style={{ display: "block", marginBottom: "20px", height: "50px", width: "100%" }}
 					format='auto'
 					responsive='true'
 				/>

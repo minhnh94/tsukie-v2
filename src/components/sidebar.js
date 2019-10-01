@@ -20,6 +20,7 @@ export default ({ children }) => (
 			<AdSense.Google
 				client={process.env.GATSBY_ADSENSE_CLIENT}
 				slot={process.env.GATSBY_ADSENSE_SLOT}
+				style={{ display: "block", marginBottom: "20px" }}
 				format='auto'
 				responsive='true'
 			/>
@@ -29,6 +30,7 @@ export default ({ children }) => (
 			<AdSense.Google
 				client={process.env.GATSBY_ADSENSE_CLIENT}
 				slot={process.env.GATSBY_ADSENSE_SLOT}
+				style={{ display: "block", marginTop: "20px" }}
 				format='auto'
 				responsive='true'
 			/>

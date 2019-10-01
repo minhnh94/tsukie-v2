@@ -6,6 +6,7 @@ export default styled.article`
 	padding-left: 15px;
 	padding-right: 15px;
 	margin-bottom: 50px;
+	overflow-x: hidden;		/* without this adsense will break the responsive layout */
 	
 	@media (min-width: 992px) {
 		margin-right: 20px;
