@@ -58,7 +58,7 @@ export default ({ posts, lang, pagingData, location }) => {
 				<AdSense.Google
 					client={process.env.GATSBY_ADSENSE_CLIENT}
 					slot={process.env.GATSBY_ADSENSE_SLOT}
-					style={{ display: "block", marginBottom: "20px", height: "50px", width: "100%" }}
+					style={{ display: "block", marginBottom: "20px", maxHeight: "50px", width: "100%" }}
 					format='auto'
 					responsive='true'
 				/>

@@ -90,13 +90,6 @@ module.exports = {
 		`gatsby-plugin-sass`,
 		`gatsby-plugin-styled-components`,
 		`gatsby-plugin-typescript`,
-		{
-			resolve: `gatsby-plugin-i18n`,
-			options: {
-				langKeyDefault: "en",
-				useLangKeyLayout: false,
-			},
-		},
 		`gatsby-plugin-sitemap`,
 	],
 }

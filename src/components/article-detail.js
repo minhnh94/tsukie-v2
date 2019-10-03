@@ -7,6 +7,7 @@ import LanguageSelector from "./language-selector"
 import { DiscussionEmbed, CommentCount } from "disqus-react"
 import AdSense from "react-adsense"
 import ErrorBoundary from "./error-boundary"
+import LazyLoad from "react-lazyload"
 
 const ArticleBody = styled.section`
 	overflow-x: hidden;
@@ -81,7 +82,7 @@ export default ({ post, tags, lang, location }) => {
 					<AdSense.Google
 						client={process.env.GATSBY_ADSENSE_CLIENT}
 						slot={process.env.GATSBY_ADSENSE_SLOT}
-						style={{ display: "block", height: "50px", width: "100%", margin: "10px 0" }}
+						style={{ display: "block", maxHeight: "50px", width: "100%", margin: "10px 0" }}
 						format='auto'
 						responsive='true'
 					/>
@@ -105,13 +106,17 @@ export default ({ post, tags, lang, location }) => {
 			/>
 			<footer>
 				<div>
-					<iframe
-						src={`https://www.facebook.com/plugins/like.php?href=${process.env.GATSBY_DISQUS_WEBSITE}${location.pathname}&width=124&layout=button_count&action=like&size=small&show_faces=true&share=true&height=46&appId=1289989531028226`}
-						width="124" height="46" style={{ border: "none", overflow: "hidden", margin: "auto", display: "block" }}
-						scrolling="no" frameBorder="0"
-						allowTransparency="true" allow="encrypted-media"/>
+					<LazyLoad height={46} once>
+						<iframe
+							src={`https://www.facebook.com/plugins/like.php?href=${process.env.GATSBY_DISQUS_WEBSITE}${location.pathname}&width=124&layout=button_count&action=like&size=small&show_faces=true&share=true&height=46&appId=1289989531028226`}
+							width="124" height="46" style={{ border: "none", overflow: "hidden", margin: "auto", display: "block" }}
+							scrolling="no" frameBorder="0"
+							allowTransparency="true" allow="encrypted-media"/>
+					</LazyLoad>
 				</div>
-				<DiscussionEmbed {...disqusConfig}/>
+				<LazyLoad height={672} once>
+					<DiscussionEmbed {...disqusConfig}/>
+				</LazyLoad>
 			</footer>
 		</FlexArticle>
 	)
