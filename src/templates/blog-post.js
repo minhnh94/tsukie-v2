@@ -8,12 +8,14 @@ import Container from "../components/container"
 import Sidebar from "../components/sidebar"
 import RecentPostWidget from "../components/widgets/recent-post-widget"
 import AllTagsWidget from "../components/widgets/all-tags-widget"
+import { getRelatedPosts } from "../utils/helpers"
 
 class BlogPostTemplate extends React.Component {
 	render() {
 		const post = this.props.data.markdownRemark
 		const { tags } = post.frontmatter
 		const allPosts = this.props.data.allMarkdownRemark.edges
+		const relatedPosts = getRelatedPosts(allPosts, post, tags)
 		const siteTitle = this.props.data.site.siteMetadata.title
 		const { language } = this.props.pageContext
 
@@ -24,7 +26,13 @@ class BlogPostTemplate extends React.Component {
 					description={post.frontmatter.description || post.excerpt}
 				/>
 				<Container>
-					<ArticleDetail post={post} tags={tags} lang={language} location={this.props.location}/>
+					<ArticleDetail
+						post={post}
+						relatedPosts={relatedPosts}
+						tags={tags}
+						lang={language}
+						location={this.props.location}
+					/>
 					<Sidebar>
 						<RecentPostWidget lang={language} posts={allPosts}/>
 						<AllTagsWidget edges={allPosts} lang={language}/>

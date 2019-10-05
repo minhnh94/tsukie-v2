@@ -18,7 +18,10 @@ export default {
 		sidebars: {
 			recentPost: "Recent posts",
 			allTags: "All tags",
-		}
+		},
+		localizations: {
+			related: "related posts"
+		},
 	},
 	ja: {
 		displayText: "日本語",
@@ -39,7 +42,10 @@ export default {
 		sidebars: {
 			recentPost: "最近の記事",
 			allTags: "全てのタグ",
-		}
+		},
+		localizations: {
+			related: "関連記事",
+		},
 	},
 	vi: {
 		displayText: "Tiếng Việt",
@@ -60,6 +66,9 @@ export default {
 		sidebars: {
 			recentPost: "Bài mới nhất",
 			allTags: "Tất cả các tags",
-		}
+		},
+		localizations: {
+			related: "bài viết liên quan"
+		},
 	},
 }

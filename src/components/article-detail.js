@@ -8,6 +8,8 @@ import { DiscussionEmbed, CommentCount } from "disqus-react"
 import AdSense from "react-adsense"
 import ErrorBoundary from "./error-boundary"
 import LazyLoad from "react-lazyload"
+import Language from "../lang/languages"
+import { Link } from "gatsby"
 
 const ArticleBody = styled.section`
 	overflow-x: hidden;
@@ -57,7 +59,7 @@ const ArticleBody = styled.section`
 	}
 `
 
-export default ({ post, tags, lang, location }) => {
+export default ({ post, relatedPosts, tags, lang, location }) => {
 	const disqusConfig = {
 		shortname: process.env.GATSBY_DISQUS_NAME,
 		config: {
@@ -113,6 +115,27 @@ export default ({ post, tags, lang, location }) => {
 							scrolling="no" frameBorder="0"
 							allowTransparency="true" allow="encrypted-media"/>
 					</LazyLoad>
+				</div>
+				<div>
+					<h2 style={{ marginBottom: "10px", textTransform: "uppercase" }}>{Language[lang].localizations.related}</h2>
+					<ul style={{ listStyleType: "none", marginLeft: "0" }}>
+						{
+							relatedPosts.map(function(post) {
+								if (post === undefined) {
+									return
+								}
+								const { node } = post
+								const firstTag = node.frontmatter.tags[0]
+								return (
+									<li style={{ fontWeight: "bold", lineHeight: "1.25em", marginBottom: "1.5em" }}>
+										<Link to={`/${lang}/${firstTag}${node.fields.slug}`}>
+											{node.frontmatter.title}
+										</Link>
+									</li>
+								)
+							})
+						}
+					</ul>
 				</div>
 				<LazyLoad height={672} once>
 					<DiscussionEmbed {...disqusConfig}/>
