@@ -22,19 +22,17 @@ const FlexAside = styled.aside`
 export default ({ children }) => (
 	<FlexAside>
 		<ErrorBoundary>
-			<LazyLoad height={280} once>
-				<AdSense.Google
-					client={process.env.GATSBY_ADSENSE_CLIENT}
-					slot={process.env.GATSBY_ADSENSE_SLOT}
-					style={{ display: "block", marginBottom: "20px" }}
-					format='auto'
-					responsive='true'
-				/>
-			</LazyLoad>
+			<AdSense.Google
+				client={process.env.GATSBY_ADSENSE_CLIENT}
+				slot={process.env.GATSBY_ADSENSE_SLOT}
+				style={{ display: "block", marginBottom: "20px" }}
+				format='auto'
+				responsive='true'
+			/>
 		</ErrorBoundary>
 		{children}
 		<ErrorBoundary>
-			<LazyLoad height={280} once>
+			<LazyLoad height={280} offset={100} once>
 				<AdSense.Google
 					className="vanish-on-mobile"
 					client={process.env.GATSBY_ADSENSE_CLIENT}
