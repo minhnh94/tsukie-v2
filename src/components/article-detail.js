@@ -4,7 +4,7 @@ import styled from "styled-components"
 import TagRow from "./tag-row"
 import FlexArticle from "./flex-article"
 import LanguageSelector from "./language-selector"
-import { DiscussionEmbed, CommentCount } from "disqus-react"
+import { DiscussionEmbed} from "disqus-react"
 import AdSense from "react-adsense"
 import ErrorBoundary from "./error-boundary"
 import LazyLoad from "react-lazyload"
@@ -97,7 +97,7 @@ export default ({ post, relatedPosts, tags, lang, location }) => {
 						marginBottom: rhythm(1),
 					}}
 				>
-					{post.frontmatter.date} - <CommentCount {...disqusConfig}/>
+					{post.frontmatter.date}
 				</p>
 			</header>
 			<ArticleBody dangerouslySetInnerHTML={{ __html: post.html }}/>
