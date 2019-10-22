@@ -3,7 +3,6 @@ import Layout from "../components/layout"
 import Container from "../components/container"
 import Sidebar from "../components/sidebar"
 import RecentPostWidget from "../components/widgets/recent-post-widget"
-import AllTagsWidget from "../components/widgets/all-tags-widget"
 import FlexArticle from "../components/flex-article"
 import { graphql } from "gatsby"
 
@@ -212,7 +211,6 @@ class TermsAndConditionsTemplate extends React.Component {
 					</FlexArticle>
 					<Sidebar>
 						<RecentPostWidget posts={edges} lang={language}/>
-						<AllTagsWidget edges={edges} lang={language}/>
 					</Sidebar>
 				</Container>
 			</Layout>
