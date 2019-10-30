@@ -12,7 +12,6 @@ const Title = styled.h4`
 
 const WrapperDiv = styled.div`
 	font-size: 14px;
-	margin-bottom: 60px;
 `
 
 export default ({ title, children }) => (

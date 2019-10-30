@@ -32,6 +32,7 @@ export default function HTML(props) {
           googletag.pubads().collapseEmptyDivs();
         `,
 			}}
+			defer={true}
 		/>
 		</body>
 		</html>
