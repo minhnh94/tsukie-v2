@@ -3,6 +3,7 @@
 	<head>
 		<meta content="width=device-width, initial-scale=1" name="viewport"/>
 		<meta name="format-detection" content="telephone=no"/>
+		<meta charset="utf-8">
 		<title>Nguyen Hoang Minh</title>
 	</head>
 	<body>
@@ -22,6 +23,7 @@
 			<div id="name-title">
 				<h1>NGUYEN HOANG MINH</h1>
 				<h2>Software engineer</h2>
+				<a id="cv-jp" href="https://tsukie.com/cv-jp.html" style="text-decoration: none; color: white;"><u>日本語の履歴書はこちらです。</u></a>
 			</div>
 			<div id="personal-info">
 				<p><strong><u>Email:</u></strong> minhnh.da@gmail.com</p>
@@ -119,7 +121,7 @@
 					<h3>Projects</h3>
 					<hr>
 					<div class="left-col-paragraph">
-						<h4>Personal blog and publication platform</h4>
+						<h4>Personal blog and publication website</h4>
 						<h5>https://tsukie.com/</h5>
 						<h5>2018/1 - present</h5>
 
@@ -199,9 +201,9 @@
 						<p>PHP, Javascript, Objective-C, Swift, HTML, CSS, SQL, Ruby. Currently learning Golang</p>
 						<h4>Framework/Technology</h4>
 						<p>Laravel (PHP), CodeIgniter (PHP), ReactJS, GraphQL, MySQL, MongoDB, Redis, Nginx, Jenkins,
-							Docker, AWS</p>
+							Docker, AWS, Redash, Cacti, Deployer, Git, JIRA</p>
 						<h4>Software/Environment</h4>
-						<p>MacOS, Windows, Linux (Ubuntu, CentOS), Git</p>
+						<p>MacOS, Windows, Linux (Ubuntu, CentOS, Amazon Linux)</p>
 					</div>
 				</div>
 				<div class="index" id="certificates">
@@ -312,6 +314,12 @@
 		@media print, screen and (min-width: 769px) {
 			#navigator-btn, #navigator {
 				display: none;
+			}
+
+			@media print {
+				#cv-jp {
+					display: none;
+				}
 			}
 
 			header {
