@@ -7,6 +7,7 @@ import ArticleDetail from "../components/article-detail"
 import Container from "../components/container"
 import Sidebar from "../components/sidebar"
 import RecentPostWidget from "../components/widgets/recent-post-widget"
+import AllTagsWidget from "../components/widgets/all-tags-widget"
 import { getRelatedPosts } from "../utils/helpers"
 
 class BlogPostTemplate extends React.Component {
@@ -35,6 +36,7 @@ class BlogPostTemplate extends React.Component {
 					/>
 					<Sidebar>
 						<RecentPostWidget lang={language} posts={allPosts}/>
+						<AllTagsWidget lang={language} edges={allPosts}/>
 					</Sidebar>
 				</Container>
 			</Layout>

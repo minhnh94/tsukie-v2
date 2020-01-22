@@ -9,6 +9,7 @@
 	<body>
 		<div id="navigator">
 			<a id="close-btn" onclick="closeNav()">&times;</a>
+			<a href="#summary" onclick="closeNav()">職務概要</a>
 			<a href="#experience" onclick="closeNav()">職歴</a>
 			<a href="#projects" onclick="closeNav()">プロジェクト</a>
 			<a href="#education" onclick="closeNav()">学歴</a>
@@ -33,6 +34,12 @@
 				<p><strong><u>住所:</u></strong> 神奈川県横浜市</p>
 			</div>
 		</header>
+		<div id="summary">
+			<h3>職務概要</h3>
+			<hr style="margin-bottom: 5px">
+			２年以上バックエンドとフロントエンド開発の実務経験があるソフトエンジニアです。現在主に PHP、Laravel、Mysql、Redis、AWSサービスを用いた開発の仕事を担当しています。ドメイン駆動設計の概念を理解し、実際に応用した経験があります。業務をこなすために短時間で新しい技術を習得する自信があります。モチベーションを維持しながらIT業界の進化と共に進めるように常に新しい言語やプログラミング技術、ソフトに関心を持ち、積極的に学習する習慣があります。深い知識を持つフルスタックエンジニアを目指し、その目標に向かって努力しています。
+			<hr style="margin-top: 5px">
+		</div>
 		<div id="container" class="main">
 			<div id="left-col">
 				<div class="index" id="experience">
@@ -51,7 +58,7 @@
 								既存のハイスコア競争イベントに大幅なシステム改修を実装
 							</li>
 							<li>
-								新規機能：ゲーム内のユニットの装備の仕様に沿ってシステムの設計、実装を担当
+								新規機能：ゲーム内のユニットの装備の仕様に沿いシステムの設計、実装を担当
 							</li>
 						</ul>
 						<ul><strong><u>プロジェクト: 2018年にDMMGAMESでリリースされたマルチプラットフォームのSNSゲーム</u></strong>
@@ -246,6 +253,10 @@
 
 		#left-col, #right-col {
 			padding: 20px 20px 0;
+		}
+
+		#summary {
+			padding: 20px;
 		}
 
 		.index {

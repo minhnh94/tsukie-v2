@@ -9,6 +9,7 @@
 	<body>
 		<div id="navigator">
 			<a id="close-btn" onclick="closeNav()">&times;</a>
+			<a href="#summary" onclick="closeNav()">CAREER SUMMARY</a>
 			<a href="#experience" onclick="closeNav()">EXPERIENCE</a>
 			<a href="#projects" onclick="closeNav()">PROJECTS</a>
 			<a href="#education" onclick="closeNav()">EDUCATION</a>
@@ -33,6 +34,12 @@
 				<p><strong><u>Location:</u></strong> Yokohama, Kanagawa, Japan</p>
 			</div>
 		</header>
+		<div id="summary">
+			<h3>Career summary</h3>
+			<hr style="margin-bottom: 5px">
+			A software engineer with more than 2 years of practical experience in backend development and frontend development. Primarily working with PHP, Laravel, Mysql, Redis and AWS services at the moment. Have hands-on experience in domain driven development (DDD). Confident of being a quick learner and ready to learn necessary things on the way to accomplish tasks. Always keep myself motivated and relevant to the IT industry by constantly learning new programming languages, paradigms and softwares. I'm aiming to be an engineer with deep expertise as a full stack engineer and currently working towards that goal.
+			<hr style="margin-top: 5px">
+		</div>
 		<div id="container" class="main">
 			<div id="left-col">
 				<div class="index" id="experience">
@@ -45,11 +52,11 @@
 
 						<ul><strong><u>Project: A multi-platform social game on DMM GAMES published in early
 							2016</u></strong>
-							<li>Designed and implemented a new unit gacha (lottery) system that had contributed an
+							<li>Designed and implemented API for a new unit gacha (lottery) system that had contributed an
 								average
 								revenue of 20 million JPY per month after production release.
 							</li>
-							<li>Designed and implemented major changes to the high score racing event inside the game
+							<li>Designed and implemented major changes to the high score racing event API inside the game
 								that
 								resulted in a noticeable increase of user retention rate during the event.
 							</li>
@@ -59,12 +66,12 @@
 						</ul>
 						<ul><strong><u>Project: A multi-platform social game on DMM GAMES published in late
 							2018</u></strong>
-							<li>Designed and implemented major changes to the existing raid battle event and add a new
+							<li>Designed and implemented major changes to the existing raid battle event API and add a new
 								real-time high score ranking system for the event, resulting in a 200% increase in
 								number of
 								daily active users during the event.
 							</li>
-							<li>Designed and implemented a brand new PvP (player versus player) system inside the game,
+							<li>Designed and implemented API for a brand new PvP (player versus player) system inside the game,
 								which had quickly become the hot topic in the players' community.
 							</li>
 							<li>Designed and implemented a data integration feature which allowed users to link their
@@ -268,6 +275,10 @@
 			padding: 20px 20px 0;
 		}
 
+		#summary {
+			padding: 20px;
+		}
+
 		.index {
 			padding-bottom: 20px;
 		}
@@ -323,21 +334,13 @@
 			}
 
 			header {
-				/*height: auto;*/
 				overflow: auto;
 			}
 
 			#personal-info {
 				display: none;
-				/*float: right;*/
-				/*width: 25%;*/
-				/*overflow-wrap: break-word;*/
 			}
 
-			/*#personal-info > p {*/
-			/*	padding-top: 5px;*/
-			/*	padding-bottom: 5px;*/
-			/*}*/
 			.hidden-when-mobile {
 				display: block;
 			}
@@ -347,7 +350,6 @@
 			}
 
 			#left-col {
-				/*float: left;*/
 				display: table-cell;
 				width: 75%;
 				padding-right: 10px;
@@ -356,7 +358,6 @@
 			#right-col {
 				background-color: #F4F4F4 !important;
 				-webkit-print-color-adjust: exact;
-				/*float: right;*/
 				display: table-cell;
 				width: 25%;
 				overflow-wrap: break-word;

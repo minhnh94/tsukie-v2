@@ -122,7 +122,7 @@ export default ({ post, relatedPosts, tags, lang, location }) => {
 						{
 							relatedPosts.map(function(post) {
 								if (post === undefined) {
-									return
+									return ''
 								}
 								const { node } = post
 								const firstTag = node.frontmatter.tags[0]
