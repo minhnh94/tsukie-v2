@@ -26,6 +26,7 @@
 				<h2>ソフトエンジニア</h2>
 				<a id="cv-en" href="https://tsukie.com/cv.html" style="text-decoration: none; color: white;"><u>Click here for English resume.</u></a>
 			</div>
+			<img id="portrait" src="portrait.jpg" alt="portrait"/>
 			<div id="personal-info">
 				<p><strong><u>メール:</u></strong> minhnh.da@gmail.com</p>
 				<p><strong><u>Github:</u></strong> https://github.com/minhnh94</p>
@@ -302,6 +303,15 @@
 			margin-left: 50px;
 		}
 
+		#portrait {
+			display: none;
+			width: 100px;
+			height: 150px;
+			float: right;
+			margin-top: 10px;
+			margin-right: 10px;
+		}
+
 		@media print, screen and (min-width: 769px) {
 			#navigator-btn, #navigator {
 				display: none;
@@ -310,6 +320,14 @@
 			@media print {
 				#cv-en {
 					display: none;
+				}
+
+				#name-title {
+					float: left;
+				}
+
+				#portrait {
+					display: block;
 				}
 			}
 
