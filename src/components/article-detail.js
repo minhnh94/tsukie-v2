@@ -57,6 +57,15 @@ const ArticleBody = styled.section`
 			text-align: center;
 		}
 	}
+
+  .gatsby-resp-image-figcaption {
+    font-size: 0.85rem;
+	  color: #a2a2a2;
+	  display: block;
+    p {
+	    text-align: center;
+    }
+  }
 `
 
 export default ({ post, relatedPosts, tags, lang, location }) => {

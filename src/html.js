@@ -26,14 +26,6 @@ export default function HTML(props) {
 		{props.postBodyComponents}
 		<script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" defer={true}/>
 		<script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js" defer={true}/>
-		<script
-			dangerouslySetInnerHTML={{
-				__html: `
-          googletag.pubads().collapseEmptyDivs();
-        `,
-			}}
-			defer={true}
-		/>
 		</body>
 		</html>
 	)
