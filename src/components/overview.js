@@ -5,6 +5,7 @@ import { Link } from "gatsby"
 import LanguageSelector from "./language-selector"
 import AdSense from "react-adsense"
 import ErrorBoundary from "./error-boundary"
+import MainCustomBanner from "../assets/main-custom-banner.png"
 
 const FlexSection = styled.section`
 	flex: 1;
@@ -54,15 +55,18 @@ export default ({ posts, lang, pagingData, location }) => {
 
 	return (
 		<FlexSection>
-			<ErrorBoundary>
-				<AdSense.Google
-					client={process.env.GATSBY_ADSENSE_CLIENT}
-					slot={process.env.GATSBY_ADSENSE_SLOT}
-					style={{ display: "block", marginBottom: "20px", maxHeight: "50px", width: "100%" }}
-					format='auto'
-					responsive='true'
-				/>
-			</ErrorBoundary>
+			{/*<ErrorBoundary>*/}
+			{/*	<AdSense.Google*/}
+			{/*		client={process.env.GATSBY_ADSENSE_CLIENT}*/}
+			{/*		slot={process.env.GATSBY_ADSENSE_SLOT}*/}
+			{/*		style={{ display: "block", marginBottom: "20px", maxHeight: "50px", width: "100%" }}*/}
+			{/*		format='auto'*/}
+			{/*		responsive='true'*/}
+			{/*	/>*/}
+			{/*</ErrorBoundary>*/}
+			<a href="https://apps.apple.com/app/wallcal-lite-desktop-calendar/id1581813374" target="_blank">
+				<img src={MainCustomBanner} alt="WallCal banner" style={{ marginTop: "10px" }}/>
+			</a>
 			<LanguageSelector location={location}/>
 			{posts.map(({ node }) => {
 				const title = node.frontmatter.title || node.fields.slug

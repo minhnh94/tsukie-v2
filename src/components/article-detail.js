@@ -10,6 +10,7 @@ import ErrorBoundary from "./error-boundary"
 import LazyLoad from "react-lazyload"
 import Language from "../lang/languages"
 import { Link } from "gatsby"
+import MainCustomBanner from "../assets/main-custom-banner.png"
 
 const ArticleBody = styled.section`
 	overflow-x: hidden;
@@ -89,15 +90,18 @@ export default ({ post, relatedPosts, tags, lang, location }) => {
 				>
 					{post.frontmatter.title}
 				</h2>
-				<ErrorBoundary>
-					<AdSense.Google
-						client={process.env.GATSBY_ADSENSE_CLIENT}
-						slot={process.env.GATSBY_ADSENSE_SLOT}
-						style={{ display: "block", maxHeight: "50px", width: "100%", margin: "10px 0" }}
-						format='auto'
-						responsive='true'
-					/>
-				</ErrorBoundary>
+				{/*<ErrorBoundary>*/}
+				{/*	<AdSense.Google*/}
+				{/*		client={process.env.GATSBY_ADSENSE_CLIENT}*/}
+				{/*		slot={process.env.GATSBY_ADSENSE_SLOT}*/}
+				{/*		style={{ display: "block", maxHeight: "50px", width: "100%", margin: "10px 0" }}*/}
+				{/*		format='auto'*/}
+				{/*		responsive='true'*/}
+				{/*	/>*/}
+				{/*</ErrorBoundary>*/}
+				<a href="https://apps.apple.com/app/wallcal-lite-desktop-calendar/id1581813374" target="_blank">
+					<img src={MainCustomBanner} alt="WallCal banner" style={{ marginTop: "10px" }}/>
+				</a>
 				<TagRow tags={tags} lang={lang}/>
 				<p
 					style={{
@@ -115,6 +119,9 @@ export default ({ post, relatedPosts, tags, lang, location }) => {
 					marginBottom: rhythm(1),
 				}}
 			/>
+			<a href="https://apps.apple.com/app/wallcal-lite-desktop-calendar/id1581813374" target="_blank">
+				<img src={MainCustomBanner} alt="WallCal banner" style={{ marginTop: "10px" }}/>
+			</a>
 			<footer>
 				<div>
 					<LazyLoad height={46} once>

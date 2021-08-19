@@ -3,6 +3,7 @@ import styled from "styled-components"
 import AdSense from "react-adsense"
 import ErrorBoundary from "./error-boundary"
 import LazyLoad from "react-lazyload"
+import SizebarCustomBanner from "../assets/sizebar-custom-banner.png"
 
 const FlexAside = styled.aside`
 	flex: 0 1 30%;
@@ -21,15 +22,18 @@ const FlexAside = styled.aside`
 
 export default ({ children }) => (
 	<FlexAside>
-		<ErrorBoundary>
-			<AdSense.Google
-				client={process.env.GATSBY_ADSENSE_CLIENT}
-				slot={process.env.GATSBY_ADSENSE_SLOT}
-				style={{ display: "block", marginBottom: "20px" }}
-				format='auto'
-				responsive='true'
-			/>
-		</ErrorBoundary>
+		{/*<ErrorBoundary>*/}
+		{/*	<AdSense.Google*/}
+		{/*		client={process.env.GATSBY_ADSENSE_CLIENT}*/}
+		{/*		slot={process.env.GATSBY_ADSENSE_SLOT}*/}
+		{/*		style={{ display: "block", marginBottom: "20px" }}*/}
+		{/*		format='auto'*/}
+		{/*		responsive='true'*/}
+		{/*	/>*/}
+		{/*</ErrorBoundary>*/}
+		<a href="https://apps.apple.com/app/wallcal-lite-desktop-calendar/id1581813374" target="_blank">
+			<img src={SizebarCustomBanner} alt="WallCal banner"/>
+		</a>
 		{children}
 		<ErrorBoundary>
 			<LazyLoad height={280} offset={100} once>
