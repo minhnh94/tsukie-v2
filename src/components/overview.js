@@ -64,7 +64,7 @@ export default ({ posts, lang, pagingData, location }) => {
 			{/*		responsive='true'*/}
 			{/*	/>*/}
 			{/*</ErrorBoundary>*/}
-			<a href="https://apps.apple.com/app/wallcal-lite-desktop-calendar/id1581813374" target="_blank">
+			<a href="https://apps.apple.com/app/wallcal-lite-desktop-calendar/id1581813374" target="_blank" rel="noopener noreferrer">
 				<img src={MainCustomBanner} alt="WallCal banner" style={{ marginTop: "10px" }}/>
 			</a>
 			<LanguageSelector location={location}/>

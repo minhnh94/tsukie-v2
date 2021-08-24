@@ -31,7 +31,7 @@ export default ({ children }) => (
 		{/*		responsive='true'*/}
 		{/*	/>*/}
 		{/*</ErrorBoundary>*/}
-		<a href="https://apps.apple.com/app/wallcal-lite-desktop-calendar/id1581813374" target="_blank">
+		<a href="https://apps.apple.com/app/wallcal-lite-desktop-calendar/id1581813374" target="_blank" rel="noopener noreferrer">
 			<img src={SizebarCustomBanner} alt="WallCal banner"/>
 		</a>
 		{children}
