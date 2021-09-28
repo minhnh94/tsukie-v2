@@ -40,13 +40,12 @@ class ContactUsTemplate extends React.Component {
 							Beside our full-time work as a programmer (we have experience with a plethora of technologies such as
 							Java/PHP/Swift/MySQL/JS and its popular frameworks...), we enjoy reading and writing to try expressing our
 							ideas and thought to the world.<br/>
-							You can find our publications here or on our Medium channel: <a
-							href="https://medium.com/@minhnh.da">https://medium.com/@minhnh.da</a>. Our writings are
+							Our writings are
 							here and there, vying for your attention, so a comment or a like button press will greatly encourage us ^^
 							(The Facebook like button won't give us any info of who liked it, it only gives us a statistic of how many
 							people have liked this article, so please feel free to like/share it!)<br/>
 							If you have any inquiries, don't hesitate to mail me at <a
-							href="mailto:minhnh.da@gmail.com">minhnh.da@gmail.com</a>!<br/>
+							href="mailto:tsukie.studio@gmail.com">tsukie.studio@gmail.com</a>!<br/>
 						</div>
 					</FlexArticle>
 					<Sidebar>
