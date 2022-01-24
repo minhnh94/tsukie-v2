@@ -21,7 +21,7 @@ class ExpertCalendarAddon extends React.Component {
 		return (
 			<Layout location={location} language={language}>
 				<SEO title="WallCal macOS app - Expert calendar add-on feature preview"/>
-				<div style={{ margin: "auto", width: "50%" }}>
+				<div style={{ margin: "auto", width: "80%" }}>
 					<h1>WallCal Expert calendar add-on feature preview</h1>
 					<br/>
 					<h4>🗓 Option to replace the month view with the weekly agenda view</h4>
