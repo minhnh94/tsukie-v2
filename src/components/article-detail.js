@@ -4,67 +4,69 @@ import styled from "styled-components"
 import TagRow from "./tag-row"
 import FlexArticle from "./flex-article"
 import LanguageSelector from "./language-selector"
-import { DiscussionEmbed} from "disqus-react"
+import { DiscussionEmbed } from "disqus-react"
 import AdSense from "react-adsense"
 import ErrorBoundary from "./error-boundary"
 import LazyLoad from "react-lazyload"
 import Language from "../lang/languages"
 import { Link } from "gatsby"
-import MainCustomBanner from "../assets/main-custom-banner.png"
+import WallCalBanner from "../assets/wallcal-banner.png"
+import CustomMainBanner from "./custom-main-banner"
 
 const ArticleBody = styled.section`
-	overflow-x: hidden;
+  overflow-x: hidden;
 
-	.gatsby-highlight {
-	  background-color: #fdf6e3;
-	  border-radius: 0.3em;
-	  margin: 0.5em 0;
-	  padding: 1em;
-	  overflow: auto;
-	}
+  .gatsby-highlight {
+    background-color: #fdf6e3;
+    border-radius: 0.3em;
+    margin: 0.5em 0;
+    padding: 1em;
+    overflow: auto;
+  }
 
-	.gatsby-highlight pre[class*="language-"].line-numbers {
-	  padding: 0 0 0 2.8em;
-	  overflow: initial;
-	}
-	
-	.language-text {
-		word-break: break-word;
-		white-space: pre-wrap;
-	}
-	
-	h3 {
-		margin-bottom: 10px;
-	}
-	
-	p {
-		text-align: justify;
-		
-		img {
-			padding-top: 20px;
-			padding-bottom: 20px;
-		
-			@media (min-width: 992px) {
-				margin: auto;
-			}
-		}
-	}
-	
-	.md-figure {
-		figcaption {
-			color: #a2a2a2;
-			display: block;
-			font-size: 0.85rem;
-			text-align: center;
-		}
-	}
+  .gatsby-highlight pre[class*="language-"].line-numbers {
+    padding: 0 0 0 2.8em;
+    overflow: initial;
+  }
+
+  .language-text {
+    word-break: break-word;
+    white-space: pre-wrap;
+  }
+
+  h3 {
+    margin-bottom: 10px;
+  }
+
+  p {
+    text-align: justify;
+
+    img {
+      padding-top: 20px;
+      padding-bottom: 20px;
+
+      @media (min-width: 992px) {
+        margin: auto;
+      }
+    }
+  }
+
+  .md-figure {
+    figcaption {
+      color: #a2a2a2;
+      display: block;
+      font-size: 0.85rem;
+      text-align: center;
+    }
+  }
 
   .gatsby-resp-image-figcaption {
     font-size: 0.85rem;
-	  color: #a2a2a2;
-	  display: block;
+    color: #a2a2a2;
+    display: block;
+
     p {
-	    text-align: center;
+      text-align: center;
     }
   }
 `
@@ -99,9 +101,9 @@ export default ({ post, relatedPosts, tags, lang, location }) => {
 				{/*		responsive='true'*/}
 				{/*	/>*/}
 				{/*</ErrorBoundary>*/}
-				<a href="https://apps.apple.com/app/wallcal-lite-desktop-calendar/id1581813374" target="_blank" rel="noopener noreferrer">
-					<img src={MainCustomBanner} alt="WallCal banner" style={{ marginTop: "10px" }}/>
-				</a>
+				<CustomMainBanner bannerImg={WallCalBanner}
+				                  bannerLink="https://apps.apple.com/app/wallcal-wallpaper-calendar/id1581367286?mt=12"
+				                  bannerAlt="WallCal app"/>
 				<TagRow tags={tags} lang={lang}/>
 				<p
 					style={{
@@ -119,9 +121,9 @@ export default ({ post, relatedPosts, tags, lang, location }) => {
 					marginBottom: rhythm(1),
 				}}
 			/>
-			<a href="https://apps.apple.com/app/wallcal-lite-desktop-calendar/id1581813374" target="_blank" rel="noopener noreferrer">
-				<img src={MainCustomBanner} alt="WallCal banner" style={{ marginTop: "10px" }}/>
-			</a>
+			<CustomMainBanner bannerImg={WallCalBanner}
+			                  bannerLink="https://apps.apple.com/app/wallcal-wallpaper-calendar/id1581367286?mt=12"
+			                  bannerAlt="WallCal app"/>
 			<footer>
 				<div>
 					<LazyLoad height={46} once>
@@ -138,7 +140,7 @@ export default ({ post, relatedPosts, tags, lang, location }) => {
 						{
 							relatedPosts.map(function(post) {
 								if (post === undefined) {
-									return ''
+									return ""
 								}
 								const { node } = post
 								const firstTag = node.frontmatter.tags[0]

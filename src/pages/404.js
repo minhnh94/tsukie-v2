@@ -4,6 +4,8 @@ import { Link } from "gatsby"
 import SEO from "../components/seo"
 import Layout from "../components/layout"
 import Language from "../lang/languages"
+import WallCalBanner from "../assets/wallcal-banner.png"
+import CustomMainBanner from "../components/custom-main-banner"
 
 class NotFoundPage extends React.Component {
 	render() {
@@ -20,14 +22,14 @@ class NotFoundPage extends React.Component {
 		return (
 			<Layout location={location} language={language}>
 				<SEO title="404: Not Found"/>
-				<div style={{ margin: "auto", width: "50%" }}>
+				<div style={{ margin: "auto", width: "70%" }}>
+					<CustomMainBanner bannerImg={WallCalBanner}
+					                  bannerLink="https://apps.apple.com/app/wallcal-wallpaper-calendar/id1581367286?mt=12"
+					                  bannerAlt="WallCal app"/>
 					<h2>Oops, 404 not found!</h2>
 					<p>You tried to search for a resource that was not available at our end. Let's scroll down and see if we have other things to offer...</p>
 					<Link to={homeLink}>Back to home.</Link> or check out some popular posts.
 					<ul>
-						<li><Link to="/en/technologies/how-to-reset-trial-time-for-jetbrains-products/">
-							How to reset trial time for Jetbrains products
-						</Link></li>
 						<li><Link
 							to="/en/lifestyle/make-money-online-with-no-experience-story-how-i-made-my-first-dollar-on-the-internet/">
 							Make money online with no experience story: How I made my first dollar on the Internet

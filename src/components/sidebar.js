@@ -3,7 +3,8 @@ import styled from "styled-components"
 import AdSense from "react-adsense"
 import ErrorBoundary from "./error-boundary"
 import LazyLoad from "react-lazyload"
-import SizebarCustomBanner from "../assets/sizebar-custom-banner.png"
+import WallCalSideBanner from "../assets/wallcal-side-banner.png"
+import CustomMainBanner from "./custom-main-banner"
 
 const FlexAside = styled.aside`
 	flex: 0 1 30%;
@@ -31,9 +32,9 @@ export default ({ children }) => (
 		{/*		responsive='true'*/}
 		{/*	/>*/}
 		{/*</ErrorBoundary>*/}
-		<a href="https://apps.apple.com/app/wallcal-lite-desktop-calendar/id1581813374" target="_blank" rel="noopener noreferrer">
-			<img src={SizebarCustomBanner} alt="WallCal banner"/>
-		</a>
+		<CustomMainBanner bannerImg={WallCalSideBanner}
+		                  bannerLink="https://apps.apple.com/app/wallcal-wallpaper-calendar/id1581367286?mt=12"
+		                  bannerAlt="WallCal app"/>
 		{children}
 		<ErrorBoundary>
 			<LazyLoad height={280} offset={100} once>

@@ -5,44 +5,45 @@ import { Link } from "gatsby"
 import LanguageSelector from "./language-selector"
 import AdSense from "react-adsense"
 import ErrorBoundary from "./error-boundary"
-import MainCustomBanner from "../assets/main-custom-banner.png"
+import WallCalBanner from "../assets/wallcal-banner.png"
+import CustomMainBanner from "./custom-main-banner"
 
 const FlexSection = styled.section`
-	flex: 1;
-	min-height: 1px;	
-	padding-left: 15px;
-	padding-right: 15px;
-	overflow-x: hidden;		/* without this adsense will break the responsive layout */
-	
-	@media (min-width: 992px) {
-		margin-right: 20px;
-	}
+  flex: 1;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  overflow-x: hidden; /* without this adsense will break the responsive layout */
+
+  @media (min-width: 992px) {
+    margin-right: 20px;
+  }
 `
 
 const Paginator = styled.div`
-	position: relative;
-	height: 50px;
-	margin-bottom: 20px;
+  position: relative;
+  height: 50px;
+  margin-bottom: 20px;
 
-	.prev {
-		background-color: #007acc;
-		box-shadow: 3px 3px 3px #888888;
-		padding: 8px;
-		color: white;
-		display: block;
-		position: absolute;
-		left: 0;
-	}
-	
-	.next {
-		background-color: #007acc;
-		box-shadow: 3px 3px 3px #888888;
-		padding: 8px;
-		color: white;
-		display: block;
-		position: absolute;
-		right: 0;
-	}
+  .prev {
+    background-color: #007acc;
+    box-shadow: 3px 3px 3px #888888;
+    padding: 8px;
+    color: white;
+    display: block;
+    position: absolute;
+    left: 0;
+  }
+
+  .next {
+    background-color: #007acc;
+    box-shadow: 3px 3px 3px #888888;
+    padding: 8px;
+    color: white;
+    display: block;
+    position: absolute;
+    right: 0;
+  }
 `
 
 export default ({ posts, lang, pagingData, location }) => {
@@ -64,9 +65,9 @@ export default ({ posts, lang, pagingData, location }) => {
 			{/*		responsive='true'*/}
 			{/*	/>*/}
 			{/*</ErrorBoundary>*/}
-			<a href="https://apps.apple.com/app/wallcal-lite-desktop-calendar/id1581813374" target="_blank" rel="noopener noreferrer">
-				<img src={MainCustomBanner} alt="WallCal banner" style={{ marginTop: "10px" }}/>
-			</a>
+			<CustomMainBanner bannerImg={WallCalBanner}
+			                  bannerLink="https://apps.apple.com/app/wallcal-wallpaper-calendar/id1581367286?mt=12"
+			                  bannerAlt="WallCal app"/>
 			<LanguageSelector location={location}/>
 			{posts.map(({ node }) => {
 				const title = node.frontmatter.title || node.fields.slug
