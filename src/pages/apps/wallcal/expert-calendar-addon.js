@@ -3,6 +3,8 @@ import SEO from "../../../components/seo"
 import Layout from "../../../components/layout"
 
 import WeeklyAgendaGif from "../../../assets/weekly-agenda.gif"
+import VisiblePeriodGif from "../../../assets/visible-period.gif"
+import DayNumGif from "../../../assets/day-num.gif"
 import ResizeCalendarGif from "../../../assets/resize-calendar.gif"
 import ToggleCalendarSetGif from "../../../assets/toggle-calendar-set.gif"
 import ToggleHiddenViewGif from "../../../assets/toggle-hidden-view.gif"
@@ -27,6 +29,16 @@ class ExpertCalendarAddon extends React.Component {
 					<h4>🗓 Option to replace the month view with the weekly agenda view</h4>
 					<br/>
 					<img src={WeeklyAgendaGif} alt="WeeklyAgenda WallCal"
+					     style={{ width: "70%", height: "70%", margin: "auto" }}/>
+					<br/>
+					<h4>🗓 You can change the visible time range while in week view mode</h4>
+					<br/>
+					<img src={VisiblePeriodGif} alt="VisiblePeriod WallCal"
+					     style={{ width: "70%", height: "70%", margin: "auto" }}/>
+					<br/>
+					<h4>🗓 And you can change the number of days displayed in week view mode (the leftmost day is today)</h4>
+					<br/>
+					<img src={DayNumGif} alt="DayNum WallCal"
 					     style={{ width: "70%", height: "70%", margin: "auto" }}/>
 					<br/>
 					<h4>📐 Resize the calendar freely as you see fit</h4>
